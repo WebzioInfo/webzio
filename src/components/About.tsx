@@ -16,7 +16,7 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
       icon: <Target className="w-8 h-8" />,
       title: "Fast Delivery",
       description: "We deliver working websites in days, not weeks."
-    },
+    },  
     {
       icon: <Code className="w-8 h-8" />,
       title: "Custom-Built",
