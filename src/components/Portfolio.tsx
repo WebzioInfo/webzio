@@ -152,7 +152,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ darkMode }) => {
     "Lighting Installation",
     "Emergency Services"
   ],
-  liveLink: "https://nihalcp1108.github.io/BrightElectrical/",
+  liveLink: "https://webzioinfo.github.io/BrightElectricals/",
   primaryColor: "#002F6C", // Deep Blue from the logo
   secondaryColor: "#0074D9", // Bright Blue highlight
   glowColor: "rgba(0, 47, 108, 0.15)" // Matching soft blue glow
