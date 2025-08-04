@@ -3,6 +3,10 @@ import { ExternalLink, ArrowLeft, ArrowRight, Sparkles, Target, Rocket, Monitor,
 import AdotzeeImg from '../assets/projects/Adotzee.png';
 import MediConnectImg from '../assets/projects/mediConnect.png';
 import PlashoeImg from '../assets/projects/plashoe.png';
+import GangothiriAquaImg from '../assets/projects/plashoe.png';
+import BrightElectricalImg from '../assets/projects/plashoe.png';
+
+import { useLocation } from 'react-router-dom';
 
 interface PortfolioProps {
   darkMode: boolean;
@@ -10,12 +14,18 @@ interface PortfolioProps {
 
 const Portfolio: React.FC<PortfolioProps> = ({ darkMode }) => {
   const [currentProject, setCurrentProject] = useState(0);
+  const [isPortfolio, setIsPortfolio] = useState(false);
+
   const [isHolographic, setIsHolographic] = useState(false);
   const [viewMode, setViewMode] = useState<'showcase' | 'grid' | 'focus'>('showcase');
   const [isAutoPlay, setIsAutoPlay] = useState(true);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
   const intervalRef = useRef<any | null>(null);
+  const location = useLocation();
+  useEffect(() => {
+    setIsPortfolio(location.pathname.startsWith('/portfolio'));
+  }, [location.pathname]);
 
   const projects = [
     {
@@ -36,8 +46,8 @@ const Portfolio: React.FC<PortfolioProps> = ({ darkMode }) => {
       ],
       liveLink: "https://www.adotzee.in",
       primaryColor: "#1C3B70",      // Core brand blue
-secondaryColor: "#3575F0",    // Lively blue for CTA buttons
-glowColor: "rgba(53, 117, 240, 0.1)"
+      secondaryColor: "#3575F0",    // Lively blue for CTA buttons
+      glowColor: "rgba(53, 117, 240, 0.1)"
     },
     {
       name: "PLASHOE",
@@ -51,8 +61,8 @@ glowColor: "rgba(53, 117, 240, 0.1)"
       features: ["Advanced Product Catalog", "Smart Filtering", "Secure Payments", "Order Tracking", "Customer Reviews"],
       liveLink: "https://sanoof-plashoe.vercel.app/",
       primaryColor: "#FACC15",      // Vibrant Yellow (key accent)
-secondaryColor: "#575756",    // Strong Black for backgrounds/buttons
-glowColor: "rgba(250, 204, 21, 0.1)"
+      secondaryColor: "#575756",    // Strong Black for backgrounds/buttons
+      glowColor: "rgba(250, 204, 21, 0.1)"
     },
     {
       name: "MEDICONNECT",
@@ -71,9 +81,10 @@ glowColor: "rgba(250, 204, 21, 0.1)"
         "Emergency Alerts"
       ],
       liveLink: "https://sanoof-mediconnect.vercel.app/",
-        primaryColor: "#0EA5E9",       // Red for urgency/health
-  secondaryColor: "#10B981",     // Orange for action elements
-glowColor: "rgba(14, 165, 233, 0.2)"    },
+      primaryColor: "#0EA5E9",       // Red for urgency/health
+      secondaryColor: "#10B981",     // Orange for action elements
+      glowColor: "rgba(14, 165, 233, 0.2)"
+    },
     {
       name: "CARPLE",
       subtitle: "Smart Carpool & Ride-Sharing",
@@ -92,9 +103,86 @@ glowColor: "rgba(14, 165, 233, 0.2)"    },
       ],
       liveLink: "https://carple-app.vercel.app/",
       primaryColor: "#8B5CF6",           // Vivid Violet
-  secondaryColor: "#EC4899",
-     glowColor: "rgba(139, 92, 246, 0.15)" 
-    }
+      secondaryColor: "#EC4899",
+      glowColor: "rgba(139, 92, 246, 0.15)"
+    },
+    {
+  name: "Gangothiri Aqua",
+  subtitle: "Pure Hydration for a Healthier Life",
+  description:
+    "Experience the perfect balance of minerals and purity with Gangothiri Aqua's premium drinking water. Sustainably packaged, quality-assured, and optimized for taste and health.",
+  techStack: ["React", "Vite", "Tailwind CSS", ".NET Core"],
+  image: GangothiriAquaImg, // replace with actual image import
+  category: "Consumer Goods",
+  year: "2025",
+  stats: {
+    products: "6+ Types",
+    certified: "ISO 9001:2015",
+    monitoring: "24/7 Quality Checks"
+  },
+  features: [
+    "Perfect Mineral Balance",
+    "Multi‑Stage Purification",
+    "ISO Certified Quality",
+    "Eco‑Friendly Packaging",
+    "24/7 Quality Monitoring"
+  ],
+  liveLink: "https://gangothiri.vercel.app/",
+  primaryColor: "#0C6D8C",
+  secondaryColor: "#60C2C8",
+  glowColor: "rgba(12, 109, 140, 0.2)"
+},
+{
+  name: "Bright Electrical",
+  subtitle: "Powering Your Future",
+  description: "Bright Electrical is a professional electrical services provider committed to delivering safe, reliable, and affordable electrical solutions for residential, commercial, and industrial needs.",
+  techStack: ["HTML", "CSS", "JavaScript", "Bootstrap"],
+  image: BrightElectricalImg, // Replace this with actual image import (e.g., import BrightElectricalImg from '../assets/Logos/BrightElectrical.png')
+  category: "Electrical Services",
+  year: "2025",
+  stats: {
+    projects: "100+ Completed",
+    clients: "80+ Happy Clients",
+    experience: "10+ Years in Service"
+  },
+  features: [
+    "Residential & Commercial Wiring",
+    "Electrical Maintenance",
+    "Panel Upgrades",
+    "Lighting Installation",
+    "Emergency Services"
+  ],
+  liveLink: "https://nihalcp1108.github.io/BrightElectrical/",
+  primaryColor: "#002F6C", // Deep Blue from the logo
+  secondaryColor: "#0074D9", // Bright Blue highlight
+  glowColor: "rgba(0, 47, 108, 0.15)" // Matching soft blue glow
+},{
+  "name": "Personal Portfolio Website",
+  "subtitle": "Professional Developer Showcase",
+  "description": "A modern personal portfolio to showcase projects, skills, and experience. Built with responsive design, elegant UI, and smooth user experience to reflect a professional developer brand.",
+  "year": "2025",
+  "category": "Portfolio",
+  "techStack": ["React", "Vite", "Tailwind CSS", "Framer Motion"],
+  "features": [
+    "Responsive Design",
+    "Animated Transitions",
+    "Project & Skill Sections",
+    "Social Media Integration",
+    "Smooth Navigation"
+  ],
+  "stats": {
+    "visitors": "5K+",
+    "loadingSpeed": "100/100",
+    "responsiveness": "100%"
+  },
+  "image": "/projects/portfolio.png",
+  "liveLink": "https://sanoof-portfolio.vercel.app",
+  "primaryColor": "#6F4EF2",
+  "secondaryColor": "#F3F4F6",
+  "glowColor": "rgba(111, 78, 242, 0.1)"
+}
+
+
   ];
 
   // Auto-play functionality
@@ -226,34 +314,7 @@ glowColor: "rgba(14, 165, 233, 0.2)"    },
         {/* Enhanced Header */}
         <div className="text-center py-16 px-4">
           <div className="relative max-w-6xl mx-auto">
-            {/* Control Panel */}
-            <div className="flex flex-wrap justify-center items-center gap-4 mb-8">
-              <button
-                onClick={() => setIsHolographic(!isHolographic)}
-                className={`px-6 py-3 rounded-full text-sm font-bold transition-all duration-500 transform hover:scale-105 ${isHolographic
-                  ? 'bg-gradient-to-r from-cyan-400 to-purple-500 text-white shadow-lg shadow-cyan-500/30'
-                  : darkMode
-                    ? 'bg-gray-800 text-gray-300 hover:bg-gray-700'
-                    : 'bg-white text-gray-700 hover:bg-gray-100 shadow-lg'
-                  }`}
-              >
-                <Sparkles size={16} className="inline mr-2" />
-                {isHolographic ? 'HOLOGRAPHIC' : 'STANDARD'}
-              </button>
-
-             <button
-  onClick={() => setIsAutoPlay(!isAutoPlay)}
-  className={`px-4 py-3 rounded-full text-sm font-semibold flex items-center gap-2 transition-all duration-300 ${
-    darkMode
-      ? 'bg-gray-800 text-gray-300 hover:bg-gray-700'
-      : 'bg-white text-gray-700 hover:bg-gray-100'
-  } shadow-lg`}
->
-  {isAutoPlay ? <Pause size={18} /> : <Play size={18} />}
-  {isAutoPlay ? 'Pause' : 'Play'}
-</button>
-
-            </div>
+         
 
             <h1
               className={`text-5xl md:text-6xl lg:text-7xl font-black mb-6 tracking-tight ${isHolographic
@@ -303,6 +364,34 @@ glowColor: "rgba(14, 165, 233, 0.2)"    },
             </div>
           </div>
         </div>
+
+           {/* Control Panel */}
+            <div className="flex flex-wrap justify-center items-center gap-4 mb-8">
+              <button
+                onClick={() => setIsHolographic(!isHolographic)}
+                className={`px-6 py-3 rounded-full text-sm font-bold transition-all duration-500 transform hover:scale-105 ${isHolographic
+                  ? 'bg-gradient-to-r from-cyan-400 to-purple-500 text-white shadow-lg shadow-cyan-500/30'
+                  : darkMode
+                    ? 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                    : 'bg-white text-gray-700 hover:bg-gray-100 shadow-lg'
+                  }`}
+              >
+                <Sparkles size={16} className="inline mr-2" />
+                {isHolographic ? 'HOLOGRAPHIC' : 'STANDARD'}
+              </button>
+
+              <button
+                onClick={() => setIsAutoPlay(!isAutoPlay)}
+                className={`px-4 py-3 rounded-full text-sm font-semibold flex items-center gap-2 transition-all duration-300 ${darkMode
+                    ? 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                    : 'bg-white text-gray-700 hover:bg-gray-100'
+                  } shadow-lg`}
+              >
+                {isAutoPlay ? <Pause size={18} /> : <Play size={18} />}
+                {isAutoPlay ? 'Pause' : 'Play'}
+              </button>
+
+            </div>
 
         {/* Main Content */}
         <div className="px-4 sm:px-6 lg:px-8 pb-20">
@@ -551,7 +640,7 @@ glowColor: "rgba(14, 165, 233, 0.2)"    },
       </div>
 
       {/* Progress Bar */}
-      {viewMode === 'showcase' && isAutoPlay && (
+      {viewMode === 'showcase' && isAutoPlay && isPortfolio && (
         <div className="fixed bottom-0 left-0 right-0 z-50">
           <div
             className="h-1 transition-all duration-300"

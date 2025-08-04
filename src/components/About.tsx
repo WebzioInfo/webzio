@@ -29,20 +29,6 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
     }
   ];
 
-  const team = [
-    {
-      name: "Mohammed Sanoof",
-      role: "Fullstack Developer",
-      bio: "Specializes in React, .NET Core, and project architecture.",
-      image: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400"
-    },
-    {
-      name: "Nihal",
-      role: "Frontend/Mobile Developer", 
-      bio: "Expert in Flutter, Tailwind CSS, and building mobile-first experiences.",
-      image: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=400"
-    }
-  ];
 
   return (
     <section id="about" className={`py-20 ${darkMode ? 'bg-gray-900' : 'bg-white'}`}>
@@ -125,40 +111,6 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
               We don't just build websites. We help people build futures.
             </p>
           </div>
-        </div>
-
-        {/* Team */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {team.map((member, index) => (
-            <div
-              key={index}
-              className={`text-center p-8 rounded-2xl transition-all duration-300 hover:scale-105 ${
-                darkMode 
-                  ? 'bg-gray-800 hover:bg-gray-750' 
-                  : 'bg-white hover:bg-gray-50 shadow-lg hover:shadow-xl'
-              }`}
-            >
-              <div className="relative w-32 h-32 mx-auto mb-6">
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="w-full h-full object-cover rounded-full"
-                />
-                <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-blue-600/20 to-purple-600/20"></div>
-              </div>
-              <h4 className={`text-2xl font-bold mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                {member.name}
-              </h4>
-              <p className={`text-lg font-semibold mb-3 ${
-                darkMode ? 'text-blue-400' : 'text-blue-600'
-              }`}>
-                {member.role}
-              </p>
-              <p className={`text-sm leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                {member.bio}
-              </p>
-            </div>
-          ))}
         </div>
       </div>
     </section>

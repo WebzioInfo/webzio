@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { MapPin, Phone, Mail, Globe, Send, CheckCircle } from 'lucide-react';
+import emailjs from 'emailjs-com';
 
 interface ContactProps {
   darkMode: boolean;
@@ -23,17 +24,20 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
     });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+
+  try {
+    await emailjs.send(
+      'service_kbl4037',       // from EmailJS dashboard
+      'template_eolkcae',      // from EmailJS dashboard
+      formData,
+      'hxbWYGVcLo4SCG7mK'        // from EmailJS dashboard
+    );
+
     setIsSubmitting(false);
     setIsSubmitted(true);
-    
-    // Reset form after 3 seconds
     setTimeout(() => {
       setIsSubmitted(false);
       setFormData({
@@ -44,7 +48,13 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
         message: ''
       });
     }, 3000);
-  };
+
+  } catch (error) {
+    console.error('Failed to send message:', error);
+    setIsSubmitting(false);
+    alert('Something went wrong. Please try again.');
+  }
+};
 
   const contactInfo = [
     {

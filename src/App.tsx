@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import WhatsAppFloat from './components/WhatsAppFloat';
 import Home from './pages/Home';
 import './App.css'
+import NotFoundPage from './pages/404/NotFoundPage';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -39,7 +40,7 @@ function App() {
           <Route path="/about" element={<About darkMode={darkMode} />} />
           <Route path="/careers" element={<Careers darkMode={darkMode} />} />
           <Route path="/contact" element={<Contact darkMode={darkMode} />} />
-          {/* <Route path="*" element={<NotFound />} /> */}
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
 
         <Footer darkMode={darkMode} />

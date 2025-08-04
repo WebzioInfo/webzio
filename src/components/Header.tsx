@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, Moon, Sun } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import Logo from "../assets/Logos/WebzioLogo.png"
+import WhiteLogo from "../assets/Logos/WebzioLogoWhite-removebg-preview.png"
 
 interface HeaderProps {
   darkMode: boolean;
@@ -44,7 +45,7 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
           {/* Logo */}
           <div className="flex items-center space-x-0">
             <img
-              src={Logo}
+              src={darkMode ? WhiteLogo : Logo}
               alt="Webzio Logo"
               className="h-20 w-auto"
             />
