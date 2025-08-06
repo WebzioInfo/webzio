@@ -3,7 +3,10 @@
 =======================*/
 
 
-.page_404{ padding:40px 0; background:#fff; font-family: 'Arvo', serif;
+.page_404{ padding:40px 50px; background:#fff; font-family: 'Arvo', serif;
+}
+.padding-for-404{
+    padding-top: 100px;
 }
 
 .page_404  img{ width:100%;}

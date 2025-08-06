@@ -1,11 +1,13 @@
 import React from 'react';
 import { ArrowRight, Play } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 interface HeroProps {
   darkMode: boolean;
 }
 
 const Hero: React.FC<HeroProps> = ({ darkMode }) => {
+  const navigate = useNavigate()
   return (
     <section id="home" className={`min-h-screen flex items-center justify-center relative overflow-hidden ${
       darkMode ? 'bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900' : 'bg-gradient-to-br from-blue-50 via-white to-purple-50'
@@ -49,7 +51,9 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
               <span>Get a Free Quote</span>
               <ArrowRight className="group-hover:translate-x-1 transition-transform duration-300" size={20} />
             </button>
-            <button className={`group px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 flex items-center space-x-2 ${
+            <button
+            onClick={()=>navigate("/services")}
+            className={`group px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 flex items-center space-x-2 ${
               darkMode 
                 ? 'bg-gray-800 text-white hover:bg-gray-700 border border-gray-700' 
                 : 'bg-white text-gray-900 hover:bg-gray-50 border border-gray-200 shadow-lg'
@@ -62,7 +66,7 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto animate-fade-in-up delay-600">
             <div className="text-center">
-              <div className={`text-3xl font-bold mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>50+</div>
+              <div className={`text-3xl font-bold mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>10+</div>
               <div className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>Projects Delivered</div>
             </div>
             <div className="text-center">

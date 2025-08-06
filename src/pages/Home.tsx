@@ -1,9 +1,9 @@
-import Hero from '../components/Hero';
-import Services from '../components/Services';
-import Portfolio from '../components/Portfolio';
-import About from '../components/About';
+import Hero from '../home/components/Hero';
+import Services from '../home/components/Services';
+import Portfolio from '../home/components/Portfolio';
+import About from '../home/components/About';
 // import Careers from '../components/Careers';
-import Contact from '../components/Contact';
+import Contact from '../home/components/Contact';
 
 const Home = ({ darkMode }: { darkMode: boolean }) => {
   return (

@@ -7,7 +7,8 @@ const NotFoundPage = () => {
 	<div className="container">
 		<div className="row">	
 		<div className="col-sm-12 ">
-		<div className="col-sm-10 col-sm-offset-1  text-center">
+		<div className="col-sm-10 col-sm-offset-1  text-center padding-for-404
+">
 		<div className="four_zero_four_bg w-1/2 mx-auto">
 			<h1 className="text-center mt-2">404</h1>
 		

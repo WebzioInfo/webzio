@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ExternalLink, ArrowLeft, ArrowRight, Sparkles, Target, Rocket, Monitor, Globe, Pause, Play } from 'lucide-react';
-import AdotzeeImg from '../assets/projects/Adotzee.png';
-import MediConnectImg from '../assets/projects/mediConnect.png';
-import PlashoeImg from '../assets/projects/plashoe.png';
-import GangothiriAquaImg from '../assets/projects/plashoe.png';
-import BrightElectricalImg from '../assets/projects/plashoe.png';
+import AdotzeeImg from '../../assets/projects/Adotzee.png';
+import MediConnectImg from '../../assets/projects/mediConnect.png';
+import PlashoeImg from '../../assets/projects/plashoe.png';
+import GangothiriAquaImg from '../../assets/projects/plashoe.png';
+import BrightElectricalImg from '../../assets/projects/plashoe.png';
 
 import { useLocation } from 'react-router-dom';
 
