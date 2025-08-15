@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Target, Heart, Code, Smartphone } from 'lucide-react';
+import gsap from 'gsap';
+import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+import planePng from '../../assets/paper.png'
+
+gsap.registerPlugin(MotionPathPlugin, ScrollTrigger);
 
 interface AboutProps {
   darkMode: boolean;
 }
 
 const About: React.FC<AboutProps> = ({ darkMode }) => {
+  const planeRef = useRef<HTMLImageElement | null>(null);
+  const builtSectionRef = useRef<HTMLDivElement | null>(null);
+
   const features = [
     {
       icon: <Heart className="w-8 h-8" />,
@@ -16,7 +25,7 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
       icon: <Target className="w-8 h-8" />,
       title: "Fast Delivery",
       description: "We deliver working websites in days, not weeks."
-    },  
+    },
     {
       icon: <Code className="w-8 h-8" />,
       title: "Custom-Built",
@@ -29,42 +38,86 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
     }
   ];
 
+  useEffect(() => {
+    if (!planeRef.current || !builtSectionRef.current) return;
+
+    const animation = gsap.to(planeRef.current, {
+      scrollTrigger: {
+        trigger: builtSectionRef.current,
+        start: 'top center',
+        end: 'bottom top',
+        scrub: true,
+      },
+      motionPath: {
+        path: [
+          { x: 100, y: -20 },
+          { x: 300, y: 10 },
+          { x: 500, y: 100 },
+          { x: 750, y: -100 },
+          { x: 350, y: -50 },
+          { x: 600, y: 100 },
+          { x: 800, y: 0 },
+          { x: window.innerWidth, y: 150 },
+        ],
+        curviness: 1.25,
+        autoRotate: true,
+      },
+      ease: 'power1.inOut',
+      duration: 3,
+    });
+
+    return () => {
+      animation.kill();
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
 
   return (
     <section id="about" className={`py-20 ${darkMode ? 'bg-gray-900' : 'bg-white'}`}>
+        <div
+          ref={builtSectionRef}
+          className="relative text-center mb-32 overflow-hidden"
+        >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Built for Everyone Section */}
-        <div className="text-center mb-20">
-          <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-            Built for Everyone
-          </h2>
-          <p className={`text-xl max-w-4xl mx-auto leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-            Whether you're a student, a startup, a local store, or a school — we have a digital solution for you. 
-            <span className="font-semibold"> Your vision, our code.</span>
-          </p>
-        </div>
 
-        {/* Why Webzio Section */}
+        {/* === Built for Everyone Section === */}
+          <div className="max-w-4xl mx-auto">
+            <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+              Built for Everyone
+            </h2>
+            <p className={`text-xl leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+              Whether you're a student, a startup, a local store, or a school — we have a digital solution for you. 
+              <span className="font-semibold text-blue-600"> Your vision, our code.</span>
+            </p>
+          </div>
+          <img
+            ref={planeRef}
+            src={planePng}
+            alt="Paper Plane"
+            className="w-20 h-auto absolute left-0 top-1/2 z-0"
+          />
+        
+
+        {/* === Why Webzio Section === */}
         <div className="mb-20">
           <div className="text-center mb-16">
             <h3 className={`text-3xl md:text-4xl font-bold mb-6 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
               Why Webzio?
             </h3>
           </div>
-          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
               <div
                 key={index}
                 className={`text-center p-6 rounded-2xl transition-all duration-300 hover:scale-105 ${
-                  darkMode 
-                    ? 'bg-gray-800 hover:bg-gray-750' 
+                  darkMode
+                    ? 'bg-gray-800 hover:bg-gray-750'
                     : 'bg-gray-50 hover:bg-gray-100'
                 }`}
               >
                 <div className={`inline-flex p-4 rounded-xl mb-4 ${
-                  darkMode 
-                    ? 'bg-blue-900/50 text-blue-400' 
+                  darkMode
+                    ? 'bg-blue-900/50 text-blue-400'
                     : 'bg-blue-100 text-blue-600'
                 }`}>
                   {feature.icon}
@@ -80,7 +133,7 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
           </div>
         </div>
 
-        {/* Who We Are Section */}
+        {/* === Who We Are Section === */}
         <div className="text-center mb-16">
           <h3 className={`text-3xl md:text-4xl font-bold mb-6 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
             Who We Are
@@ -90,7 +143,7 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
           </p>
         </div>
 
-        {/* Story */}
+        {/* === Story Section === */}
         <div className={`rounded-3xl p-8 md:p-12 mb-16 ${
           darkMode ? 'bg-gray-800' : 'bg-gray-50'
         }`}>
@@ -112,6 +165,8 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
             </p>
           </div>
         </div>
+
+      </div>
       </div>
     </section>
   );

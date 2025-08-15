@@ -1,36 +1,27 @@
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
 
 const CursorFollower = () => {
   const dotRef = useRef<HTMLDivElement>(null);
-  const animationRef = useRef<number | null>(null);
-  const mousePos = useRef({ x: 0, y: 0 });
-  const currentPos = useRef({ x: 0, y: 0 });
   const isHoveringRef = useRef(false);
 
-  const lerp = (start: number, end: number, factor: number) =>
-    start + (end - start) * factor;
-
-  const animate = useCallback(() => {
+  useEffect(() => {
     const dot = dotRef.current;
     if (!dot) return;
 
-    currentPos.current.x = lerp(currentPos.current.x, mousePos.current.x, 0.15);
-    currentPos.current.y = lerp(currentPos.current.y, mousePos.current.y, 0.15);
+    const pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
 
-    dot.style.transform = `translate3d(${currentPos.current.x - 8}px, ${currentPos.current.y - 8}px, 0)`;
-    dot.className = `fixed top-0 left-0 pointer-events-none z-[9999] will-change-transform rounded-full transition-all duration-300 ease-out ${
-      isHoveringRef.current
-        ? 'w-8 h-8 bg-gray-300/30 backdrop-blur-sm'
-        : 'w-1.5 h-1.5 bg-gray-600/80'
-    }`;
-
-    animationRef.current = requestAnimationFrame(animate);
-  }, []);
-
-  useEffect(() => {
     const moveCursor = (e: MouseEvent) => {
-      mousePos.current.x = e.clientX;
-      mousePos.current.y = e.clientY;
+      pos.x = e.clientX;
+      pos.y = e.clientY;
+
+      gsap.to(dot, {
+        x: pos.x - 8,
+        y: pos.y - 8,
+        duration: 0.3,
+        ease: 'power3.out',
+        force3D: true, 
+      });
     };
 
     const handleHover = (e: MouseEvent) => {
@@ -39,21 +30,33 @@ const CursorFollower = () => {
         'button, a, input, textarea, select, [role="button"], [tabindex="0"], .cursor-pointer'
       );
       isHoveringRef.current = !!interactive;
+
+      if (dot) {
+        const hoverClass = interactive
+          ? 'w-8 h-8 bg-gray-300/30 backdrop-blur-sm'
+          : 'w-1.5 h-1.5 bg-gray-600/80';
+
+        dot.className = `fixed top-0 left-0 pointer-events-none z-[9999] will-change-transform rounded-full transition-all duration-300 ease-out ${hoverClass}`;
+      }
     };
 
     document.addEventListener('mousemove', moveCursor, { passive: true });
     document.addEventListener('mouseover', handleHover, { passive: true });
 
-    animationRef.current = requestAnimationFrame(animate);
-
     return () => {
       document.removeEventListener('mousemove', moveCursor);
       document.removeEventListener('mouseover', handleHover);
-      if (animationRef.current) cancelAnimationFrame(animationRef.current);
     };
-  }, [animate]);
+  }, []);
 
-  return <div ref={dotRef} style={{ transform: 'translate3d(-8px, -8px, 0)' }} />;
+  return (
+    <div
+      ref={dotRef}
+      style={{
+        transform: 'translate3d(-8px, -8px, 0)',
+      }}
+    />
+  );
 };
 
 export default CursorFollower;
