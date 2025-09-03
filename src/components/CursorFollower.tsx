@@ -33,7 +33,7 @@ const CursorFollower = () => {
 
       if (dot) {
         const hoverClass = interactive
-          ? 'w-8 h-8 bg-gray-300/30 backdrop-blur-sm'
+          ? 'w-5 h-5 bg-gray-300/30 backdrop-blur-sm'
           : 'w-1.5 h-1.5 bg-gray-600/80';
 
         dot.className = `fixed top-0 left-0 pointer-events-none z-[9999] will-change-transform rounded-full transition-all duration-300 ease-out ${hoverClass}`;

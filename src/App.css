@@ -1,5 +1,35 @@
 @import "tailwindcss";
 
+@layer utilities {
+  .bg-clip-text {
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+}
+
+@theme {
+  --font-display: "Inter", "system-ui", "sans-serif";
+  --breakpoint-3xl: 120rem;
+
+  /* Classic Modern Monochrome Colors */
+  --color-webzio-primary: #0A0A0A;      /* Deep black for text */
+  --color-webzio-secondary: #FFFFFF;    /* Pure white */
+  --color-webzio-dark: #000000;         /* True black */
+  --color-webzio-light: #FAFAFA;        /* Subtle off-white */
+  --color-webzio-gray: #6B7280;         /* Neutral gray */
+  --color-webzio-gold: #404040;         /* Dark gray (replacing gold) */
+  --color-webzio-rose: #525252;         /* Medium gray (replacing rose) */
+  --color-webzio-contrast: #171717;     /* Near black for contrast */
+  
+  /* Modern monochrome palette */
+  --color-webzio-accent: #262626;       /* Dark accent */
+  --color-webzio-surface: #F5F5F5;      /* Light surface */
+  --color-webzio-border: #E5E5E5;       /* Subtle border */
+  --color-webzio-muted: #9CA3AF;        /* Muted text */
+}
+
 .smooth-wrapper {
   overflow: hidden;
 }
@@ -8,4 +38,46 @@
   will-change: transform;
 }
 
+/* Light theme (default) - Classic & Clean */
+:root {
+  --color-bg: #FFFFFF;
+  --color-surface: #FAFAFA;
+  --color-primary: #0A0A0A;
+  --color-secondary: #6B7280;
+  --color-text: #171717;
+  --color-border: #E5E5E5;
+  --color-accent: #404040;
+}
 
+body {
+  background-color: #FFFFFF;
+  color: var(--color-text);
+}
+
+/* Dark theme - Elegant inverse */
+[data-theme="dark"] {
+  --color-bg: #0A0A0A;
+  --color-surface: #171717;
+  --color-primary: #FAFAFA;
+  --color-secondary: #9CA3AF;
+  --color-text: #E5E5E5;
+  --color-border: #262626;
+  --color-accent: #D4D4D4;
+}
+
+[data-theme="dark"] body {
+  background-color: #0A0A0A;
+}
+
+/* Classic gradient utilities - monochrome only */
+.gradient-primary {
+  background: linear-gradient(135deg, #0A0A0A 0%, #404040 100%);
+}
+
+.gradient-accent {
+  background: linear-gradient(135deg, #171717 0%, #525252 100%);
+}
+
+.gradient-light {
+  background: linear-gradient(135deg, #FFFFFF 0%, #F5F5F5 100%);
+}

@@ -1,8 +1,7 @@
 import React from 'react';
 import { Code, Heart, MapPin, Phone, Mail, Globe, Instagram, Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import FooterLogo from "../assets/Logos/WebzioLogoWhite-removebg-preview.png"
-
+import FooterLogo from "../assets/Logos/WEBZIOLOGO5-01.png";
 interface FooterProps {
   darkMode: boolean;
 }
