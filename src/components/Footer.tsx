@@ -7,14 +7,14 @@ interface FooterProps {
 }
 
 const Footer: React.FC<FooterProps> = ({ darkMode }) => {
-const quickLinks = [
-  { name: 'Home', href: '/' },
-  { name: 'Services', href: '/services' },
-  { name: 'Portfolio', href: '/portfolio' },
-  { name: 'About', href: '/about' },
-  { name: 'Careers', href: '/careers' },
-  { name: 'Contact', href: '/contact' }
-];
+  const quickLinks = [
+    { name: 'Home', href: '/' },
+    { name: 'Services', href: '/services' },
+    { name: 'Portfolio', href: '/portfolio' },
+    { name: 'About', href: '/about' },
+    { name: 'Careers', href: '/careers' },
+    { name: 'Contact', href: '/contact' }
+  ];
 
 
   const services = [
@@ -40,13 +40,13 @@ const quickLinks = [
           {/* Company Info */}
           <div className="lg:col-span-1">
             <div className="flex items-center space-x-0">
-            <img
-              src={FooterLogo}
-              alt="Webzio Logo"
-              className="h-30 -m-5 -mt-7 -ml-9 w-auto"
-            />
-            <h1 className="text-2xl -mt-3 ms-2 font-extrabold" style={{ fontFamily: '"Droid Serif", serif' }}>WEBZIO</h1>
-          </div>
+              <img
+                src={FooterLogo}
+                alt="Webzio Logo"
+                className="h-30 -m-5 -mt-7 -ml-9 w-auto"
+              />
+              <h1 className="text-2xl -mt-3 ms-2 font-extrabold" style={{ fontFamily: '"Droid Serif", serif' }}>WEBZIO</h1>
+            </div>
             <p className="text-gray-300 mb-6 leading-relaxed">
               Digital Solutions, Built for Everyone. From personal websites to powerful business apps — we do it all.
             </p>
@@ -64,21 +64,21 @@ const quickLinks = [
           </div>
 
           {/* Quick Links */}
-        <div>
-  <h4 className="text-lg font-semibold mb-6 text-white">Quick Links</h4>
-  <ul className="space-y-3">
-    {quickLinks.map((link, index) => (
-      <li key={index}>
-        <Link
-          to={link.href}
-          className="text-gray-300 hover:text-blue-400 transition-colors duration-200"
-        >
-          {link.name}
-        </Link>
-      </li>
-    ))}
-  </ul>
-</div>
+          <div>
+            <h4 className="text-lg font-semibold mb-6 text-white">Quick Links</h4>
+            <ul className="space-y-3">
+              {quickLinks.map((link, index) => (
+                <li key={index}>
+                  <Link
+                    to={link.href}
+                    className="text-gray-300 hover:text-blue-400 transition-colors duration-200"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
           {/* Services */}
           <div>
@@ -112,14 +112,14 @@ const quickLinks = [
           </div>
         </div>
 
-     {/* Bottom Section */}
-<div className="border-t border-gray-800 pt-6 mt-8">
-  <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-    <div className="text-gray-500 text-sm">
-      © {new Date().getFullYear()} <span className="font-semibold text-gray-300">Webzio</span>. All rights reserved.
-    </div>
-  </div>
-</div>
+        {/* Bottom Section */}
+        <div className="border-t border-gray-800 pt-6 mt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="text-gray-500 text-sm">
+              © {new Date().getFullYear()} <span className="font-semibold text-gray-300">Webzio</span>. All rights reserved.
+            </div>
+          </div>
+        </div>
 
       </div>
     </footer>

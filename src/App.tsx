@@ -1,89 +1,84 @@
-import { useEffect, useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
-import Header from './components/Header';
-import Services from './home/components/Services';
-import Portfolio from './home/components/Portfolio';
-import About from './home/components/About';
-import Careers from './home/components/Careers';
-import Contact from './home/components/Contact';
-import Footer from './components/Footer';
-import WhatsAppFloat from './components/WhatsAppFloat';
-import Home from './pages/Home';
-import './App.css';
-import NotFoundPage from './pages/404/NotFoundPage';
-import CursorFollower from './components/CursorFollower';
-import LoadingPage from './components/LoadingPage';
+import { useEffect, useState } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import WhatsAppFloat from "./components/WhatsAppFloat";
+import CursorFollower from "./components/CursorFollower";
+import LoadingPage from "./components/LoadingPage";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Home from "./pages/Home";
+import Services from "./home/components/Services";
+import Portfolio from "./home/components/Portfolio";
+import About from "./home/components/About";
+import Careers from "./home/components/Careers";
+import Contact from "./home/components/Contact";
+import NotFoundPage from "./pages/404/NotFoundPage";
+import "./App.css";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const location = useLocation();
 
+  // Initialize AOS
   useEffect(() => {
-    AOS.init({
-      duration: 600,
-      once: true,
-      easing: "ease-out",
-    });
+    AOS.init({ duration: 600, once: true, easing: "ease-out" });
   }, []);
 
+  // Refresh AOS on route change
+  useEffect(() => {
+    AOS.refresh();
+  }, [location.pathname]);
+
+  // Load saved theme
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) {
-      setDarkMode(savedTheme === "dark");
-    }
+    if (savedTheme) setDarkMode(savedTheme === "dark");
   }, []);
 
-  const handleLoadingComplete = () => {
-    setIsLoading(false);
-  };
+  // Apply theme to <html>
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", darkMode);
+    localStorage.setItem("theme", darkMode ? "dark" : "light");
+  }, [darkMode]);
 
-  const toggleDarkMode = () => {
-    const newMode = !darkMode;
-    setDarkMode(newMode);
-    localStorage.setItem("theme", newMode ? "dark" : "light");
-  };
+  const toggleDarkMode = () => setDarkMode((prev) => !prev);
+  const handleLoadingComplete = () => setIsLoading(false);
 
-  if (isLoading) {
+  if (isLoading)
     return (
-      <LoadingPage onLoadingComplete={handleLoadingComplete} loadingDuration={1.5} />
+      <LoadingPage
+        onLoadingComplete={handleLoadingComplete}
+        loadingDuration={1.5}
+      />
     );
-  }
 
   return (
-    <>
-      <div className={darkMode ? "dark" : ""}>
-        <div
-          className={`min-h-screen transition-colors duration-300 ${
-            darkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"
-          }`}
-        >
-          {/* Header always at the top */}
+    <div
+      className={`min-h-screen transition-colors duration-500 ${
+        darkMode ? "bg-webzio-primary text-white" : "bg-webzio-secondary text-gray-900"
+      }`}
+    >
+      
+      <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
 
-          {/* Main routing section */}
-          <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-          <main>
-            <Routes>
-              <Route path="/" element={<Home darkMode={darkMode} />} />
-              <Route path="/services" element={<Services darkMode={darkMode} />} />
-              <Route path="/portfolio" element={<Portfolio darkMode={darkMode} />} />
-              <Route path="/about" element={<About darkMode={darkMode} />} />
-              <Route path="/careers" element={<Careers darkMode={darkMode} />} />
-              <Route path="/contact" element={<Contact darkMode={darkMode} />} />
-              <Route path="*" element={<NotFoundPage />} />
-            </Routes>
-          </main>
+      <main>
+        <Routes>
+          <Route path="/" element={<Home darkMode={darkMode} />} />
+          <Route path="/services" element={<Services darkMode={darkMode} />} />
+          <Route path="/portfolio" element={<Portfolio darkMode={darkMode} />} />
+          <Route path="/about" element={<About darkMode={darkMode} />} />
+          <Route path="/careers" element={<Careers darkMode={darkMode} />} />
+          <Route path="/contact" element={<Contact darkMode={darkMode} />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </main>
 
-          {/* Footer always at the bottom */}
-          <Footer darkMode={darkMode} />
-          <WhatsAppFloat />
-        </div>
-      </div>
-
-      {/* Cursor animation overlay */}
+      <Footer darkMode={darkMode} />
+      <WhatsAppFloat />
       <CursorFollower />
-    </>
+    </div>
   );
 }
 

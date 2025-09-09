@@ -24,59 +24,43 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
     });
   };
 
-const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  setIsSubmitting(true);
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
 
-  try {
-    await emailjs.send(
-      'service_kbl4037',       // from EmailJS dashboard
-      'template_eolkcae',      // from EmailJS dashboard
-      formData,
-      'hxbWYGVcLo4SCG7mK'        // from EmailJS dashboard
-    );
+    try {
+      await emailjs.send(
+        'service_kbl4037',
+        'template_eolkcae',
+        formData,
+        'hxbWYGVcLo4SCG7mK'
+      );
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        service: '',
-        message: ''
-      });
-    }, 3000);
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          service: '',
+          message: ''
+        });
+      }, 3000);
 
-  } catch (error) {
-    console.error('Failed to send message:', error);
-    setIsSubmitting(false);
-    alert('Something went wrong. Please try again.');
-  }
-};
+    } catch (error) {
+      console.error('Failed to send message:', error);
+      setIsSubmitting(false);
+      alert('Something went wrong. Please try again.');
+    }
+  };
 
   const contactInfo = [
-    {
-      icon: <MapPin className="w-6 h-6" />,
-      title: "Location",
-      details: "Kerala, India"
-    },
-    {
-      icon: <Phone className="w-6 h-6" />,
-      title: "Phone",
-      details: "+91 7907805626"
-    },
-    {
-      icon: <Mail className="w-6 h-6" />,
-      title: "Email",
-      details: "support@webzio.in"
-    },
-    {
-      icon: <Globe className="w-6 h-6" />,
-      title: "Website",
-      details: "www.webzio.in"
-    }
+    { icon: <MapPin className="w-6 h-6" />, title: "Location", details: "Kerala, India" },
+    { icon: <Phone className="w-6 h-6" />, title: "Phone", details: "+91 7907805626" },
+    { icon: <Mail className="w-6 h-6" />, title: "Email", details: "support@webzio.in" },
+    { icon: <Globe className="w-6 h-6" />, title: "Website", details: "www.webzio.in" }
   ];
 
   const services = [
@@ -90,14 +74,27 @@ const handleSubmit = async (e: React.FormEvent) => {
   ];
 
   return (
-    <section id="contact" className={`py-20 ${darkMode ? 'bg-gray-900' : 'bg-white'}`}>
+    <section
+      id="contact"
+      className={`py-20 transition-colors duration-500 ${
+        darkMode ? 'bg-[#2D151F]' : 'bg-[#F4F3DC]'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+          <h2
+            className={`text-4xl md:text-5xl font-bold mb-6 ${
+              darkMode ? 'text-[#F4F3DC]' : 'text-[#2D151F]'
+            }`}
+          >
             Ready to Start Your Project?
           </h2>
-          <p className={`text-xl max-w-3xl mx-auto ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+          <p
+            className={`text-xl max-w-3xl mx-auto ${
+              darkMode ? 'text-[#F4F3DC]/80' : 'text-[#2D151F]/80'
+            }`}
+          >
             We're just one message away.
           </p>
         </div>
@@ -105,10 +102,18 @@ const handleSubmit = async (e: React.FormEvent) => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Information */}
           <div>
-            <h3 className={`text-3xl font-bold mb-8 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+            <h3
+              className={`text-3xl font-bold mb-8 ${
+                darkMode ? 'text-[#F4F3DC]' : 'text-[#2D151F]'
+              }`}
+            >
               Get in Touch
             </h3>
-            <p className={`text-lg mb-8 leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+            <p
+              className={`text-lg mb-8 leading-relaxed ${
+                darkMode ? 'text-[#F4F3DC]/80' : 'text-[#2D151F]/80'
+              }`}
+            >
               Have a project in mind? Whether it's a simple portfolio or a complex business application, 
               we'd love to hear about it. Let's discuss how we can bring your ideas to life.
             </p>
@@ -116,18 +121,26 @@ const handleSubmit = async (e: React.FormEvent) => {
             <div className="space-y-6">
               {contactInfo.map((info, index) => (
                 <div key={index} className="flex items-center space-x-4">
-                  <div className={`p-3 rounded-xl ${
-                    darkMode 
-                      ? 'bg-blue-900/50 text-blue-400' 
-                      : 'bg-blue-100 text-blue-600'
-                  }`}>
+                  <div
+                    className={`p-3 rounded-xl ${
+                      darkMode
+                        ? 'bg-[#F4F3DC]/10 text-[#F4F3DC]'
+                        : 'bg-[#2D151F]/10 text-[#2D151F]'
+                    }`}
+                  >
                     {info.icon}
                   </div>
                   <div>
-                    <h4 className={`font-semibold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                    <h4
+                      className={`font-semibold ${
+                        darkMode ? 'text-[#F4F3DC]' : 'text-[#2D151F]'
+                      }`}
+                    >
                       {info.title}
                     </h4>
-                    <p className={`${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                    <p
+                      className={`${darkMode ? 'text-[#F4F3DC]/80' : 'text-[#2D151F]/80'}`}
+                    >
                       {info.details}
                     </p>
                   </div>
@@ -137,15 +150,17 @@ const handleSubmit = async (e: React.FormEvent) => {
 
             {/* Quick Contact Buttons */}
             <div className="mt-8 space-y-4">
-              <button className="w-full bg-green-500 text-white px-6 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl flex items-center justify-center space-x-2">
+              <button className="w-full bg-green-600 text-white px-6 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl flex items-center justify-center space-x-2">
                 <Phone className="w-5 h-5" />
                 <span>WhatsApp Us</span>
               </button>
-              <button className={`w-full px-6 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 border flex items-center justify-center space-x-2 ${
-                darkMode 
-                  ? 'border-gray-600 text-gray-300 hover:bg-gray-800' 
-                  : 'border-gray-300 text-gray-700 hover:bg-gray-50'
-              }`}>
+              <button
+                className={`w-full px-6 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 border flex items-center justify-center space-x-2 ${
+                  darkMode
+                    ? 'border-[#F4F3DC]/30 text-[#F4F3DC] hover:bg-[#F4F3DC]/10'
+                    : 'border-[#2D151F]/30 text-[#2D151F] hover:bg-[#2D151F]/10'
+                }`}
+              >
                 <Mail className="w-5 h-5" />
                 <span>Send Email</span>
               </button>
@@ -153,30 +168,49 @@ const handleSubmit = async (e: React.FormEvent) => {
           </div>
 
           {/* Contact Form */}
-          <div className={`p-8 rounded-2xl ${
-            darkMode ? 'bg-gray-800' : 'bg-gray-50'
-          }`}>
-            <h3 className={`text-2xl font-bold mb-6 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+          <div
+            className={`p-8 rounded-2xl ${
+              darkMode ? 'bg-[#F4F3DC]/10' : 'bg-[#2D151F]/5'
+            }`}
+          >
+            <h3
+              className={`text-2xl font-bold mb-6 ${
+                darkMode ? 'text-[#F4F3DC]' : 'text-[#2D151F]'
+              }`}
+            >
               Send us a Message
             </h3>
 
             {isSubmitted ? (
               <div className="text-center py-12">
-                <CheckCircle className={`w-16 h-16 mx-auto mb-4 ${
-                  darkMode ? 'text-green-400' : 'text-green-600'
-                }`} />
-                <h4 className={`text-2xl font-bold mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                <CheckCircle
+                  className={`w-16 h-16 mx-auto mb-4 ${
+                    darkMode ? 'text-green-400' : 'text-green-600'
+                  }`}
+                />
+                <h4
+                  className={`text-2xl font-bold mb-2 ${
+                    darkMode ? 'text-[#F4F3DC]' : 'text-[#2D151F]'
+                  }`}
+                >
                   Message Sent!
                 </h4>
-                <p className={`${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                <p
+                  className={`${darkMode ? 'text-[#F4F3DC]/80' : 'text-[#2D151F]/80'}`}
+                >
                   We'll get back to you within 24 hours.
                 </p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Inputs */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className={`block text-sm font-semibold mb-2 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                    <label
+                      className={`block text-sm font-semibold mb-2 ${
+                        darkMode ? 'text-[#F4F3DC]' : 'text-[#2D151F]'
+                      }`}
+                    >
                       Name *
                     </label>
                     <input
@@ -185,16 +219,21 @@ const handleSubmit = async (e: React.FormEvent) => {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className={`w-full px-4 py-3 rounded-lg border transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                        darkMode 
-                          ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
-                          : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
+                      className={`w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-[#2D151F] ${
+                        darkMode
+                          ? 'bg-[#2D151F] border-[#F4F3DC]/30 text-[#F4F3DC] placeholder-[#F4F3DC]/50'
+                          : 'bg-white border-[#2D151F]/30 text-[#2D151F] placeholder-[#2D151F]/50'
                       }`}
                       placeholder="Your full name"
                     />
                   </div>
+
                   <div>
-                    <label className={`block text-sm font-semibold mb-2 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                    <label
+                      className={`block text-sm font-semibold mb-2 ${
+                        darkMode ? 'text-[#F4F3DC]' : 'text-[#2D151F]'
+                      }`}
+                    >
                       Email *
                     </label>
                     <input
@@ -203,10 +242,10 @@ const handleSubmit = async (e: React.FormEvent) => {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className={`w-full px-4 py-3 rounded-lg border transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                        darkMode 
-                          ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
-                          : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
+                      className={`w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-[#2D151F] ${
+                        darkMode
+                          ? 'bg-[#2D151F] border-[#F4F3DC]/30 text-[#F4F3DC] placeholder-[#F4F3DC]/50'
+                          : 'bg-white border-[#2D151F]/30 text-[#2D151F] placeholder-[#2D151F]/50'
                       }`}
                       placeholder="your@email.com"
                     />
@@ -215,7 +254,11 @@ const handleSubmit = async (e: React.FormEvent) => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className={`block text-sm font-semibold mb-2 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                    <label
+                      className={`block text-sm font-semibold mb-2 ${
+                        darkMode ? 'text-[#F4F3DC]' : 'text-[#2D151F]'
+                      }`}
+                    >
                       Phone
                     </label>
                     <input
@@ -223,26 +266,31 @@ const handleSubmit = async (e: React.FormEvent) => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className={`w-full px-4 py-3 rounded-lg border transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                        darkMode 
-                          ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
-                          : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
+                      className={`w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-[#2D151F] ${
+                        darkMode
+                          ? 'bg-[#2D151F] border-[#F4F3DC]/30 text-[#F4F3DC] placeholder-[#F4F3DC]/50'
+                          : 'bg-white border-[#2D151F]/30 text-[#2D151F] placeholder-[#2D151F]/50'
                       }`}
                       placeholder="+91 9876543210"
                     />
                   </div>
+
                   <div>
-                    <label className={`block text-sm font-semibold mb-2 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                    <label
+                      className={`block text-sm font-semibold mb-2 ${
+                        darkMode ? 'text-[#F4F3DC]' : 'text-[#2D151F]'
+                      }`}
+                    >
                       Service Needed
                     </label>
                     <select
                       name="service"
                       value={formData.service}
                       onChange={handleInputChange}
-                      className={`w-full px-4 py-3 rounded-lg border transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                        darkMode 
-                          ? 'bg-gray-700 border-gray-600 text-white' 
-                          : 'bg-white border-gray-300 text-gray-900'
+                      className={`w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-[#2D151F] ${
+                        darkMode
+                          ? 'bg-[#2D151F] border-[#F4F3DC]/30 text-[#F4F3DC]'
+                          : 'bg-white border-[#2D151F]/30 text-[#2D151F]'
                       }`}
                     >
                       <option value="">Select a service</option>
@@ -256,7 +304,11 @@ const handleSubmit = async (e: React.FormEvent) => {
                 </div>
 
                 <div>
-                  <label className={`block text-sm font-semibold mb-2 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                  <label
+                    className={`block text-sm font-semibold mb-2 ${
+                      darkMode ? 'text-[#F4F3DC]' : 'text-[#2D151F]'
+                    }`}
+                  >
                     Project Details *
                   </label>
                   <textarea
@@ -265,10 +317,10 @@ const handleSubmit = async (e: React.FormEvent) => {
                     onChange={handleInputChange}
                     required
                     rows={5}
-                    className={`w-full px-4 py-3 rounded-lg border transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none ${
-                      darkMode 
-                        ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
-                        : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
+                    className={`w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-[#2D151F] resize-none ${
+                      darkMode
+                        ? 'bg-[#2D151F] border-[#F4F3DC]/30 text-[#F4F3DC] placeholder-[#F4F3DC]/50'
+                        : 'bg-white border-[#2D151F]/30 text-[#2D151F] placeholder-[#2D151F]/50'
                     }`}
                     placeholder="Tell us about your project, timeline, budget, and any specific requirements..."
                   />
@@ -280,7 +332,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                   className={`w-full py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:scale-105 flex items-center justify-center space-x-2 ${
                     isSubmitting
                       ? 'bg-gray-400 cursor-not-allowed'
-                      : 'bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:shadow-xl'
+                      : 'bg-gradient-to-r from-[#2D151F] to-[#6D2C3B] text-[#F4F3DC] hover:shadow-xl'
                   }`}
                 >
                   {isSubmitting ? (

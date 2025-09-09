@@ -1,8 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Menu, X, Moon, Sun } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
-import Logo from "../assets/Logos/webzioLOGO-01.png";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { motion } from "framer-motion"; // ✅ Smooth animations
+import Logo from "../assets/Logos/webzioLOGO-01-cropped.png";
 import WhiteLogo from "../assets/Logos/WEBZIOLOGO5-01.png";
+import { HashLink } from "react-router-hash-link";
+
 
 interface HeaderProps {
   darkMode: boolean;
@@ -11,26 +14,27 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isExpanded, setIsExpanded] = useState(false); // opposite logic
+  const [isExpanded, setIsExpanded] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const location = useLocation();
   const menuRef = useRef<HTMLDivElement>(null);
 
-  // ✅ Detect scroll direction (down = expand, up = shrink)
+  // ✅ Throttled scroll detection
+  const navigate = useNavigate();
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      const currentScroll = window.scrollY;
-
-      if (currentScroll > lastScrollY) {
-        // scrolling down → expand
-        setIsExpanded(true);
-      } else {
-        // scrolling up → shrink
-        setIsExpanded(false);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScroll = window.scrollY;
+          setIsExpanded(currentScroll <= lastScrollY);
+          setLastScrollY(currentScroll);
+          ticking = false;
+        });
+        ticking = true;
       }
-
-      setLastScrollY(currentScroll);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -40,14 +44,14 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
   // ✅ Close menu when route changes
   useEffect(() => {
     setIsMenuOpen(false);
+    console.log(location.pathname)
   }, [location.pathname]);
 
   const navItems = [
-    { name: "Home", to: "/" },
     { name: "Services", to: "#services" },
     { name: "Portfolio", to: "#portfolio" },
     { name: "About", to: "#about" },
-    { name: "Careers", to: "#careers" },
+    // { name: "Careers", to: "#careers" },
     { name: "Contact", to: "#contact" },
   ];
 
@@ -55,42 +59,52 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
 
   return (
     <div className="absolute">
-      <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50  bg-transparent">
-        <div
+      <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-transparent">
+        <motion.div
           ref={menuRef}
-          className={`
-            transition-all duration-500 ease-out
-            ${isExpanded || isHovered || isMenuOpen ? "w-[90vw] max-w-4xl" : "w-auto min-w-[200px]"}
-          `}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
+          animate={{
+            width: isExpanded || isHovered || isMenuOpen ? "90vw" : "300px",
+            padding: isExpanded || isHovered || isMenuOpen ? "12px 24px" : "8px 16px",
+          }}
+          transition={{ type: "spring", stiffness: 200, damping: 25 }}
+          className="md:max-w-4xl"
         >
           {/* Navbar container */}
           <div
             className={`
               relative overflow-hidden backdrop-blur-xl rounded-full
-              transition-all duration-500 ease-out
-              ${darkMode ? "bg-webzio-primary/90 border border-webzio-gray/20" : "bg-webzio-secondary/90 border border-webzio-gray/10"}
-              ${isExpanded || isHovered || isMenuOpen ? "px-6 py-3 shadow-2xl" : "px-4 py-2 shadow-lg"}
+              transition-all duration-500 ease-in-out p-2
+              ${darkMode
+                ? " bg-webzio-secondary/90 border border-webzio-gray/20"
+                : "bg-webzio-secondary/90 border border-webzio-gray/10"}
+              ${isExpanded || isHovered || isMenuOpen ? "shadow-2xl" : "shadow-lg"}
             `}
           >
             <div className="flex items-center justify-between">
               {/* Logo */}
-              <img
-                src={darkMode ? WhiteLogo : Logo}
+              <motion.img
+                src={Logo}
+                
                 alt="Webzio Logo"
-                className={`transition-all duration-300 ${isExpanded || isHovered || isMenuOpen ? "h-8" : "h-6"}`}
+                animate={{ height: isExpanded || isHovered || isMenuOpen ? 28 : 26 }}
+                transition={{ duration: 0.3 }}
+                className="transition-all duration-300 p-1.5"
+                onClick={()=>navigate('/')}
               />
 
               {/* Desktop Nav */}
-              <nav
-                className={`
-                  hidden md:flex items-center space-x-6 transition-all duration-500 ease-out
-                  ${isExpanded || isHovered || isMenuOpen ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"}
-                `}
+              <motion.nav
+                className={`hidden items-center space-x-6  ${isExpanded || isHovered || isMenuOpen ? "md:flex" : "hidden"}`}
+                animate={{
+                  opacity: isExpanded || isHovered || isMenuOpen ? 1 : 0,
+                  scale: isExpanded || isHovered || isMenuOpen ? 1 : 0.95,
+                }}
+                transition={{ duration: 0.4 }}
               >
                 {navItems.map((item) => (
-                  <Link
+                  <HashLink
                     key={item.name}
                     to={item.to}
                     className={`
@@ -99,35 +113,32 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
                         ? darkMode
                           ? "bg-webzio-secondary text-webzio-primary"
                           : "bg-webzio-primary text-webzio-secondary"
-                        : darkMode
-                          ? "text-webzio-secondary hover:bg-webzio-secondary/10"
-                          : "text-webzio-primary hover:bg-webzio-primary/10"}
+                        :  "text-webzio-primary hover:bg-webzio-primary/10"}
                     `}
                   >
                     {item.name}
-                  </Link>
+                  </HashLink>
                 ))}
-              </nav>
+              </motion.nav>
 
               {/* Actions */}
               <div className="flex items-center space-x-2">
                 {/* Theme Toggle */}
-                <button
+                <motion.button
                   onClick={toggleDarkMode}
+                  whileTap={{ scale: 0.9 }}
                   className={`
                     p-2 rounded-full transition-all duration-300
-                    ${darkMode
-                      ? "bg-webzio-secondary/10 text-webzio-secondary hover:bg-webzio-secondary/20"
-                      : "bg-webzio-primary/10 text-webzio-primary hover:bg-webzio-primary/20"}
-                    ${isExpanded || isHovered || isMenuOpen ? "opacity-100 scale-100" : "opacity-80 scale-90"}
+                    ${ "bg-webzio-primary/10 text-webzio-primary hover:bg-webzio-primary/20"}
                   `}
                 >
                   {darkMode ? <Sun size={16} /> : <Moon size={16} />}
-                </button>
+                </motion.button>
 
                 {/* Mobile Menu Toggle */}
-                <button
+                <motion.button
                   onClick={() => setIsMenuOpen((prev) => !prev)}
+                  whileTap={{ scale: 0.9 }}
                   className={`
                     md:hidden p-2 rounded-full transition-all duration-300
                     ${darkMode
@@ -136,17 +147,25 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
                   `}
                 >
                   {isMenuOpen ? <X size={18} /> : <Menu size={18} />}
-                </button>
+                </motion.button>
               </div>
             </div>
           </div>
 
           {/* Mobile Menu */}
-          <div
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: -10 }}
+            animate={
+              isMenuOpen
+                ? { opacity: 1, scale: 1, y: 0 }
+                : { opacity: 0, scale: 0.95, y: -10 }
+            }
+            transition={{ duration: 0.4 }}
             className={`
-              md:hidden mt-2 rounded-3xl backdrop-blur-xl overflow-hidden transition-all duration-500 ease-out
-              ${darkMode ? "bg-webzio-primary/95 border border-webzio-gray/20" : "bg-webzio-secondary/95 border border-webzio-gray/10"}
-              ${isMenuOpen ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-95 -translate-y-4 pointer-events-none"}
+              md:hidden mt-2 rounded-3xl backdrop-blur-xl overflow-hidden
+              ${darkMode
+                ? "bg-webzio-primary/95 border border-webzio-gray/20"
+                : "bg-webzio-secondary/95 border border-webzio-gray/10"}
             `}
           >
             <nav className="p-4 space-y-2">
@@ -169,8 +188,8 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
                 </Link>
               ))}
             </nav>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </header>
 
       {/* Spacer so content isn’t hidden under header */}

@@ -92,7 +92,7 @@ const Careers: React.FC<CareersProps> = ({ darkMode }) => {
   ];
 
   return (
-    <section id="careers" className={`py-20 ${darkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
+    <section id="careers" className={`py-28 ${darkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">

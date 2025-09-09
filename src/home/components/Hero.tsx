@@ -1,7 +1,6 @@
 import React from "react";
 import { ArrowRight, Play } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import LightRays from "../../components/LightRays";
 
 interface HeroProps {
   darkMode: boolean;
@@ -13,12 +12,12 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
   return (
     <section
       id="home"
-      className={`relative min-h-screen flex items-center justify-center overflow-hidden ${
+      className={`relative min-h-screen flex items-center justify-center overflow-hidden transition-colors duration-500 ${
         darkMode ? "bg-webzio-primary" : "bg-webzio-secondary"
       }`}
     >
-      {/* Light Rays Effect */}
-      <div className="absolute inset-0 overflow-hidden">
+       {/* Light Rays Effect */}
+      {/* <div className="absolute inset-0 overflow-hidden">
         <LightRays
           raysOrigin="top-center"
           raysColor={darkMode ? "#FAFAFA" : "#0A0A0A"} // Updated to match monochrome theme
@@ -31,10 +30,10 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
           distortion={0.03}
           className="absolute inset-0 z-0"
         />
-      </div>
-
+      </div> */}
       {/* Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+        {/* Heading */}
         <h1
           className={`text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight ${
             darkMode ? "text-webzio-secondary" : "text-webzio-primary"
@@ -42,29 +41,29 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
         >
           Build Websites & Apps
           <br />
-          <span 
+          <span
             className={`${
-              darkMode 
-                ? "text-webzio-muted" 
-                : "text-webzio-gray"
+              darkMode ? "text-webzio-muted" : "text-webzio-gray"
             }`}
           >
             That Speak for You
           </span>
         </h1>
 
+        {/* Subheading */}
         <p
           className={`text-lg md:text-xl lg:text-2xl mb-10 max-w-3xl mx-auto ${
             darkMode ? "text-webzio-secondary/80" : "text-webzio-primary/80"
           }`}
         >
           From personal portfolios to business platforms — Webzio crafts
-          beautiful, budget-friendly digital solutions that make your vision a
-          reality.
+          beautiful, budget-friendly digital solutions that bring your vision to
+          life.
         </p>
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-14">
+          {/* Primary Button */}
           <button className="group bg-webzio-primary text-webzio-secondary px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl flex items-center justify-center space-x-2">
             <span>Get a Free Quote</span>
             <ArrowRight
@@ -72,6 +71,8 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
               className="group-hover:translate-x-1 transition-transform"
             />
           </button>
+
+          {/* Secondary Button */}
           <button
             onClick={() => navigate("/services")}
             className={`group px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 flex items-center justify-center space-x-2 ${
@@ -83,35 +84,6 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
             <Play size={20} />
             <span>Explore Services</span>
           </button>
-        </div>
-
-        {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto">
-          {[
-            { value: "10+", label: "Projects Delivered" },
-            { value: "100%", label: "Client Satisfaction" },
-            { value: "24/7", label: "Support Available" },
-            { value: "Fast", label: "Delivery" },
-          ].map((stat, i) => (
-            <div key={i} className="text-center group">
-              <div
-                className={`text-3xl font-bold transition-colors duration-300 ${
-                  darkMode 
-                    ? "text-webzio-secondary group-hover:text-webzio-muted" 
-                    : "text-webzio-primary group-hover:text-webzio-gray"
-                }`}
-              >
-                {stat.value}
-              </div>
-              <div
-                className={`text-sm ${
-                  darkMode ? "text-webzio-secondary/80" : "text-webzio-primary/80"
-                }`}
-              >
-                {stat.label}
-              </div>
-            </div>
-          ))}
         </div>
       </div>
 

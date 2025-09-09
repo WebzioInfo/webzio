@@ -107,80 +107,80 @@ const Portfolio: React.FC<PortfolioProps> = ({ darkMode }) => {
       glowColor: "rgba(139, 92, 246, 0.15)"
     },
     {
-  name: "Gangothiri Aqua",
-  subtitle: "Pure Hydration for a Healthier Life",
-  description:
-    "Experience the perfect balance of minerals and purity with Gangothiri Aqua's premium drinking water. Sustainably packaged, quality-assured, and optimized for taste and health.",
-  techStack: ["React", "Vite", "Tailwind CSS", ".NET Core"],
-  image: GangothiriAquaImg, // replace with actual image import
-  category: "Consumer Goods",
-  year: "2025",
-  stats: {
-    products: "6+ Types",
-    certified: "ISO 9001:2015",
-    monitoring: "24/7 Quality Checks"
-  },
-  features: [
-    "Perfect Mineral Balance",
-    "Multi‑Stage Purification",
-    "ISO Certified Quality",
-    "Eco‑Friendly Packaging",
-    "24/7 Quality Monitoring"
-  ],
-  liveLink: "https://gangothiri.vercel.app/",
-  primaryColor: "#0C6D8C",
-  secondaryColor: "#60C2C8",
-  glowColor: "rgba(12, 109, 140, 0.2)"
-},
-{
-  name: "Bright Electrical",
-  subtitle: "Powering Your Future",
-  description: "Bright Electrical is a professional electrical services provider committed to delivering safe, reliable, and affordable electrical solutions for residential, commercial, and industrial needs.",
-  techStack: ["HTML", "CSS", "JavaScript", "Bootstrap"],
-  image: BrightElectricalImg, // Replace this with actual image import (e.g., import BrightElectricalImg from '../assets/Logos/BrightElectrical.png')
-  category: "Electrical Services",
-  year: "2025",
-  stats: {
-    projects: "100+ Completed",
-    clients: "80+ Happy Clients",
-    experience: "10+ Years in Service"
-  },
-  features: [
-    "Residential & Commercial Wiring",
-    "Electrical Maintenance",
-    "Panel Upgrades",
-    "Lighting Installation",
-    "Emergency Services"
-  ],
-  liveLink: "https://webzioinfo.github.io/BrightElectricals/",
-  primaryColor: "#002F6C", // Deep Blue from the logo
-  secondaryColor: "#0074D9", // Bright Blue highlight
-  glowColor: "rgba(0, 47, 108, 0.15)" // Matching soft blue glow
-},{
-  "name": "Personal Portfolio Website",
-  "subtitle": "Professional Developer Showcase",
-  "description": "A modern personal portfolio to showcase projects, skills, and experience. Built with responsive design, elegant UI, and smooth user experience to reflect a professional developer brand.",
-  "year": "2025",
-  "category": "Portfolio",
-  "techStack": ["React", "Vite", "Tailwind CSS", "Framer Motion"],
-  "features": [
-    "Responsive Design",
-    "Animated Transitions",
-    "Project & Skill Sections",
-    "Social Media Integration",
-    "Smooth Navigation"
-  ],
-  "stats": {
-    "visitors": "5K+",
-    "loadingSpeed": "100/100",
-    "responsiveness": "100%"
-  },
-  "image": "/projects/portfolio.png",
-  "liveLink": "https://sanoof-portfolio.vercel.app",
-  "primaryColor": "#6F4EF2",
-  "secondaryColor": "#F3F4F6",
-  "glowColor": "rgba(111, 78, 242, 0.1)"
-}
+      name: "Gangothiri Aqua",
+      subtitle: "Pure Hydration for a Healthier Life",
+      description:
+        "Experience the perfect balance of minerals and purity with Gangothiri Aqua's premium drinking water. Sustainably packaged, quality-assured, and optimized for taste and health.",
+      techStack: ["React", "Vite", "Tailwind CSS", ".NET Core"],
+      image: GangothiriAquaImg, // replace with actual image import
+      category: "Consumer Goods",
+      year: "2025",
+      stats: {
+        products: "6+ Types",
+        certified: "ISO 9001:2015",
+        monitoring: "24/7 Quality Checks"
+      },
+      features: [
+        "Perfect Mineral Balance",
+        "Multi‑Stage Purification",
+        "ISO Certified Quality",
+        "Eco‑Friendly Packaging",
+        "24/7 Quality Monitoring"
+      ],
+      liveLink: "https://gangothiri.vercel.app/",
+      primaryColor: "#0C6D8C",
+      secondaryColor: "#60C2C8",
+      glowColor: "rgba(12, 109, 140, 0.2)"
+    },
+    {
+      name: "Bright Electrical",
+      subtitle: "Powering Your Future",
+      description: "Bright Electrical is a professional electrical services provider committed to delivering safe, reliable, and affordable electrical solutions for residential, commercial, and industrial needs.",
+      techStack: ["HTML", "CSS", "JavaScript", "Bootstrap"],
+      image: BrightElectricalImg, // Replace this with actual image import (e.g., import BrightElectricalImg from '../assets/Logos/BrightElectrical.png')
+      category: "Electrical Services",
+      year: "2025",
+      stats: {
+        projects: "100+ Completed",
+        clients: "80+ Happy Clients",
+        experience: "10+ Years in Service"
+      },
+      features: [
+        "Residential & Commercial Wiring",
+        "Electrical Maintenance",
+        "Panel Upgrades",
+        "Lighting Installation",
+        "Emergency Services"
+      ],
+      liveLink: "https://webzioinfo.github.io/BrightElectricals/",
+      primaryColor: "#002F6C", // Deep Blue from the logo
+      secondaryColor: "#0074D9", // Bright Blue highlight
+      glowColor: "rgba(0, 47, 108, 0.15)" // Matching soft blue glow
+    }, {
+      "name": "Personal Portfolio Website",
+      "subtitle": "Professional Developer Showcase",
+      "description": "A modern personal portfolio to showcase projects, skills, and experience. Built with responsive design, elegant UI, and smooth user experience to reflect a professional developer brand.",
+      "year": "2025",
+      "category": "Portfolio",
+      "techStack": ["React", "Vite", "Tailwind CSS", "Framer Motion"],
+      "features": [
+        "Responsive Design",
+        "Animated Transitions",
+        "Project & Skill Sections",
+        "Social Media Integration",
+        "Smooth Navigation"
+      ],
+      "stats": {
+        "visitors": "5K+",
+        "loadingSpeed": "100/100",
+        "responsiveness": "100%"
+      },
+      "image": "/projects/portfolio.png",
+      "liveLink": "https://sanoof-portfolio.vercel.app",
+      "primaryColor": "#6F4EF2",
+      "secondaryColor": "#F3F4F6",
+      "glowColor": "rgba(111, 78, 242, 0.1)"
+    }
 
 
   ];
@@ -262,21 +262,13 @@ const Portfolio: React.FC<PortfolioProps> = ({ darkMode }) => {
 
   return (
     <div
+    id='portfolio'
       ref={containerRef}
-      className={`relative min-h-screen overflow-hidden ${darkMode ? 'bg-gray-900' : 'bg-gray-50'}`}
+      className={`relative min-h-screen overflow-hidden ${darkMode ? 'bg-[#151f2d]' : 'bg-webzio-gold'}`}
     >
       {/* Dynamic Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Animated Gradient Orbs */}
-        <div
-          className="absolute w-96 h-96 rounded-full opacity-20 blur-3xl animate-pulse"
-          style={{
-            background: `linear-gradient(135deg, ${currentProjectData.primaryColor}, ${currentProjectData.secondaryColor})`,
-            top: '10%',
-            right: '10%',
-            transform: `translate(${mousePosition.x * 30}px, ${mousePosition.y * 30}px)`
-          }}
-        />
+
         <div
           className="absolute w-80 h-80 rounded-full opacity-15 blur-3xl animate-pulse"
           style={{
@@ -314,7 +306,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ darkMode }) => {
         {/* Enhanced Header */}
         <div className="text-center py-16 px-4">
           <div className="relative max-w-6xl mx-auto">
-         
+
 
             <h1
               className={`text-5xl md:text-6xl lg:text-7xl font-black mb-6 tracking-tight ${isHolographic
@@ -365,33 +357,33 @@ const Portfolio: React.FC<PortfolioProps> = ({ darkMode }) => {
           </div>
         </div>
 
-           {/* Control Panel */}
-            <div className="flex flex-wrap justify-center items-center gap-4 mb-8">
-              <button
-                onClick={() => setIsHolographic(!isHolographic)}
-                className={`px-6 py-3 rounded-full text-sm font-bold transition-all duration-500 transform hover:scale-105 ${isHolographic
-                  ? 'bg-gradient-to-r from-cyan-400 to-purple-500 text-white shadow-lg shadow-cyan-500/30'
-                  : darkMode
-                    ? 'bg-gray-800 text-gray-300 hover:bg-gray-700'
-                    : 'bg-white text-gray-700 hover:bg-gray-100 shadow-lg'
-                  }`}
-              >
-                <Sparkles size={16} className="inline mr-2" />
-                {isHolographic ? 'HOLOGRAPHIC' : 'STANDARD'}
-              </button>
+        {/* Control Panel */}
+        <div className="flex flex-wrap justify-center items-center gap-4 mb-8">
+          <button
+            onClick={() => setIsHolographic(!isHolographic)}
+            className={`px-6 py-3 rounded-full text-sm font-bold transition-all duration-500 transform hover:scale-105 ${isHolographic
+              ? 'bg-gradient-to-r from-cyan-400 to-purple-500 text-white shadow-lg shadow-cyan-500/30'
+              : darkMode
+                ? 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                : 'bg-white text-gray-700 hover:bg-gray-100 shadow-lg'
+              }`}
+          >
+            <Sparkles size={16} className="inline mr-2" />
+            {isHolographic ? 'HOLOGRAPHIC' : 'STANDARD'}
+          </button>
 
-              <button
-                onClick={() => setIsAutoPlay(!isAutoPlay)}
-                className={`px-4 py-3 rounded-full text-sm font-semibold flex items-center gap-2 transition-all duration-300 ${darkMode
-                    ? 'bg-gray-800 text-gray-300 hover:bg-gray-700'
-                    : 'bg-white text-gray-700 hover:bg-gray-100'
-                  } shadow-lg`}
-              >
-                {isAutoPlay ? <Pause size={18} /> : <Play size={18} />}
-                {isAutoPlay ? 'Pause' : 'Play'}
-              </button>
+          <button
+            onClick={() => setIsAutoPlay(!isAutoPlay)}
+            className={`px-4 py-3 rounded-full text-sm font-semibold flex items-center gap-2 transition-all duration-300 ${darkMode
+              ? 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+              : 'bg-white text-gray-700 hover:bg-gray-100'
+              } shadow-lg`}
+          >
+            {isAutoPlay ? <Pause size={18} /> : <Play size={18} />}
+            {isAutoPlay ? 'Pause' : 'Play'}
+          </button>
 
-            </div>
+        </div>
 
         {/* Main Content */}
         <div className="px-4 sm:px-6 lg:px-8 pb-20">

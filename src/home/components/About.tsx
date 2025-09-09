@@ -50,13 +50,13 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
       },
       motionPath: {
         path: [
-          { x: 100, y: -20 },
+          { x: 200, y: -20 },
           { x: 300, y: 10 },
           { x: 500, y: 100 },
           { x: 750, y: -100 },
           { x: 350, y: -50 },
-          { x: 600, y: 100 },
-          { x: 800, y: 0 },
+          { x: 600, y: -300 },
+          { x: 800, y: -150 },
           { x: window.innerWidth, y: 150 },
         ],
         curviness: 1.25,
@@ -73,12 +73,12 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
   }, []);
 
   return (
-    <section id="about" className={`py-20 ${darkMode ? 'bg-gray-900' : 'bg-white'}`}>
+    <section id="about" className={`py-20 ${darkMode ? 'bg-gray-900' : 'bg-webzio-secondary'}`}>
         <div
           ref={builtSectionRef}
           className="relative text-center mb-32 overflow-hidden"
         >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl  mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* === Built for Everyone Section === */}
           <div className="max-w-4xl mx-auto">
