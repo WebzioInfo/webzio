@@ -65,7 +65,7 @@ export default function Parallax({ darkMode }: { darkMode: boolean }) {
     <section
       className={`relative w-full flex flex-col justify-center items-center py-20 transition-colors duration-500
       ${darkMode
-        ? "bg-gradient-to-br from-[#1E1E1E] to-[#2C2C2C] text-gray-100"
+        ? "bg-gradient-to-br from-[#351717] to-[#2C2C2C] text-gray-100"
         : "bg-gradient-to-br from-[#F4F3DC] to-[#EADFD4] text-[#2D151F]"
       }`}
     >

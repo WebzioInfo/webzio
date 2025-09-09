@@ -17,14 +17,15 @@ const Footer: React.FC<FooterProps> = ({ darkMode }) => {
   ];
 
 
-  const services = [
-    'Personal Websites',
-    'Business Websites',
-    'E-commerce Stores',
-    'Mobile Apps',
-    'Custom Web Apps',
-    'UI/UX Design'
-  ];
+const services = [
+  'Digital Solutions',       // Merges Personal & Business Websites
+  'E-commerce Platforms',    // E-commerce Stores
+  'Mobile Applications',     // Mobile Apps
+  'Custom Web Applications', // Custom Web Apps
+  'UI/UX Design',            // UI/UX Design
+  'Digital Marketing & SEO'  // Replaces Hosting/Cloud for marketing focus
+];
+
 
   const contactInfo = [
     { icon: <MapPin className="w-4 h-4" />, text: 'Kerala, India' },
@@ -34,7 +35,7 @@ const Footer: React.FC<FooterProps> = ({ darkMode }) => {
   ];
 
   return (
-    <footer className={`py-16 mx-4 rounded-t-xl  ${darkMode ? 'bg-gray-900 border-t border-gray-900' : 'bg-gray-800 text-white'}`}>
+    <footer className={`py-16 mx-4 rounded-t-xl  ${darkMode ? 'bg-[#3A1C28] border-t border-gray-900' : 'bg-[#3A1C28] text-white'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-5">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Company Info */}
@@ -51,14 +52,14 @@ const Footer: React.FC<FooterProps> = ({ darkMode }) => {
               Digital Solutions, Built for Everyone. From personal websites to powerful business apps — we do it all.
             </p>
             <div className="flex space-x-4">
-              <a href="https://www.instagram.com/webzi.o/" target='_blank' className="p-2 bg-gray-800 rounded-lg hover:bg-blue-600 transition-colors duration-300">
-                <Instagram className="w-5 h-5" />
+              <a href="https://www.instagram.com/webzi.o/" target='_blank' className="p-2 bg-webzio-secondary rounded-lg hover:bg-blue-600 transition-colors duration-300">
+                <Instagram className="w-5 h-5 text-webzio-primary/90" />
               </a>
-              <a href="#" className="p-2 bg-gray-800 rounded-lg hover:bg-blue-600 transition-colors duration-300">
-                <Linkedin className="w-5 h-5" />
+              <a href="#" className="p-2 bg-webzio-secondary rounded-lg hover:bg-blue-600 transition-colors duration-300">
+                <Linkedin className="w-5 h-5 text-webzio-primary/90" />
               </a>
-              <a href="#" className="p-2 bg-gray-800 rounded-lg hover:bg-green-600 transition-colors duration-300">
-                <Phone className="w-5 h-5" />
+              <a href="#" className="p-2 bg-webzio-secondary rounded-lg hover:bg-green-600 transition-colors duration-300">
+                <Phone className="w-5 h-5 text-webzio-primary/90" />
               </a>
             </div>
           </div>
@@ -100,7 +101,7 @@ const Footer: React.FC<FooterProps> = ({ darkMode }) => {
             <ul className="space-y-4">
               {contactInfo.map((info, index) => (
                 <li key={index} className="flex items-center space-x-3">
-                  <div className="text-blue-400">
+                  <div className="text-webzio-secondary">
                     {info.icon}
                   </div>
                   <span className="text-gray-300 text-sm">

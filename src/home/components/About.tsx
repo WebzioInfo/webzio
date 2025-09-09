@@ -73,21 +73,31 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
   }, []);
 
   return (
-    <section id="about" className={`py-20 ${darkMode ? 'bg-gray-900' : 'bg-webzio-secondary'}`}>
-        <div
-          ref={builtSectionRef}
-          className="relative text-center mb-32 overflow-hidden"
-        >
-      <div className="max-w-7xl  mx-auto px-4 sm:px-6 lg:px-8">
+    <section
+      id="about"
+      className={`py-20 transition-colors duration-500 ${
+        darkMode ? "bg-[#1A0E13]" : "bg-[#FAF9F6]"
+      }`}
+    >
+      <div ref={builtSectionRef} className="relative text-center mb-32 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* === Built for Everyone Section === */}
+          {/* === Built for Everyone Section === */}
           <div className="max-w-4xl mx-auto">
-            <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+            <h2
+              className={`text-4xl md:text-5xl font-bold mb-6 ${
+                darkMode ? "text-[#F4F3DC]" : "text-[#2D151F]"
+              }`}
+            >
               Built for Everyone
             </h2>
-            <p className={`text-xl leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-              Whether you're a student, a startup, a local store, or a school — we have a digital solution for you. 
-              <span className="font-semibold text-blue-600"> Your vision, our code.</span>
+            <p
+              className={`text-xl leading-relaxed ${
+                darkMode ? "text-[#EDE9DD]" : "text-gray-700"
+              }`}
+            >
+              Whether you're a student, a startup, a local store, or a school — we have a digital solution for you.
+              <span className="font-semibold text-[#C1785A]"> Your vision, our code.</span>
             </p>
           </div>
           <img
@@ -96,77 +106,115 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
             alt="Paper Plane"
             className="w-20 h-auto absolute left-0 top-1/2 z-0"
           />
-        
 
-        {/* === Why Webzio Section === */}
-        <div className="mb-20">
-          <div className="text-center mb-16">
-            <h3 className={`text-3xl md:text-4xl font-bold mb-6 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-              Why Webzio?
-            </h3>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => (
-              <div
-                key={index}
-                className={`text-center p-6 rounded-2xl transition-all duration-300 hover:scale-105 ${
-                  darkMode
-                    ? 'bg-gray-800 hover:bg-gray-750'
-                    : 'bg-gray-50 hover:bg-gray-100'
+          {/* === Why Webzio Section === */}
+          <div className="mb-20">
+            <div className="text-center mb-16">
+              <h3
+                className={`text-3xl md:text-4xl font-bold mb-6 ${
+                  darkMode ? "text-[#F4F3DC]" : "text-[#2D151F]"
                 }`}
               >
-                <div className={`inline-flex p-4 rounded-xl mb-4 ${
-                  darkMode
-                    ? 'bg-blue-900/50 text-blue-400'
-                    : 'bg-blue-100 text-blue-600'
-                }`}>
-                  {feature.icon}
+                Why Webzio?
+              </h3>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {features.map((feature, index) => (
+                <div
+                  key={index}
+                  className={`text-center p-6 rounded-2xl transition-all duration-300 hover:scale-105 ${
+                    darkMode
+                      ? "bg-[#3A1C28] hover:bg-[#4C2A34]"
+                      : "bg-[#EDE9DD] hover:bg-[#FAF9F6]"
+                  }`}
+                >
+                  <div
+                    className={`inline-flex p-4 rounded-xl mb-4 ${
+                      darkMode
+                        ? "bg-[#C1785A]/20 text-[#F4F3DC]"
+                        : "bg-[#C1785A]/10 text-[#2D151F]"
+                    }`}
+                  >
+                    {feature.icon}
+                  </div>
+                  <h4
+                    className={`text-xl font-bold mb-3 ${
+                      darkMode ? "text-[#F4F3DC]" : "text-[#2D151F]"
+                    }`}
+                  >
+                    {feature.title}
+                  </h4>
+                  <p
+                    className={`text-sm leading-relaxed ${
+                      darkMode ? "text-[#EDE9DD]" : "text-gray-700"
+                    }`}
+                  >
+                    {feature.description}
+                  </p>
                 </div>
-                <h4 className={`text-xl font-bold mb-3 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                  {feature.title}
-                </h4>
-                <p className={`text-sm leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                  {feature.description}
-                </p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
 
-        {/* === Who We Are Section === */}
-        <div className="text-center mb-16">
-          <h3 className={`text-3xl md:text-4xl font-bold mb-6 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-            Who We Are
-          </h3>
-          <p className={`text-lg mb-4 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
-            A small team with big vision
-          </p>
-        </div>
-
-        {/* === Story Section === */}
-        <div className={`rounded-3xl p-8 md:p-12 mb-16 ${
-          darkMode ? 'bg-gray-800' : 'bg-gray-50'
-        }`}>
-          <div className="max-w-4xl mx-auto text-center">
-            <p className={`text-lg leading-relaxed mb-6 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-              Webzio was started by two passionate developers from Kerala with a shared goal — to make 
-              high-quality digital products accessible to everyone.
-            </p>
-            <p className={`text-lg leading-relaxed mb-6 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-              We noticed that small businesses, students, and everyday people needed websites and apps 
-              but were blocked by high costs and lack of technical knowledge.
-            </p>
-            <p className={`text-lg leading-relaxed mb-6 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-              So we created Webzio — where creativity meets code, affordability meets functionality, 
-              and every project gets the personal care it deserves.
-            </p>
-            <p className={`text-xl font-semibold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-              We don't just build websites. We help people build futures.
+          {/* === Who We Are Section === */}
+          <div className="text-center mb-16">
+            <h3
+              className={`text-3xl md:text-4xl font-bold mb-6 ${
+                darkMode ? "text-[#F4F3DC]" : "text-[#2D151F]"
+              }`}
+            >
+              Who We Are
+            </h3>
+            <p
+              className={`text-lg mb-4 ${
+                darkMode ? "text-[#EDE9DD]" : "text-gray-600"
+              }`}
+            >
+              A small team with big vision
             </p>
           </div>
-        </div>
 
-      </div>
+          {/* === Story Section === */}
+          <div
+            className={`rounded-3xl p-8 md:p-12 mb-16 ${
+              darkMode ? "bg-[#3A1C28]" : "bg-[#EDE9DD]"
+            }`}
+          >
+            <div className="max-w-4xl mx-auto text-center">
+              <p
+                className={`text-lg leading-relaxed mb-6 ${
+                  darkMode ? "text-[#F4F3DC]" : "text-gray-700"
+                }`}
+              >
+                Webzio was started by two passionate developers from Kerala with a shared goal — to make
+                high-quality digital products accessible to everyone.
+              </p>
+              <p
+                className={`text-lg leading-relaxed mb-6 ${
+                  darkMode ? "text-[#F4F3DC]" : "text-gray-700"
+                }`}
+              >
+                We noticed that small businesses, students, and everyday people needed websites and apps
+                but were blocked by high costs and lack of technical knowledge.
+              </p>
+              <p
+                className={`text-lg leading-relaxed mb-6 ${
+                  darkMode ? "text-[#F4F3DC]" : "text-gray-700"
+                }`}
+              >
+                So we created Webzio — where creativity meets code, affordability meets functionality,
+                and every project gets the personal care it deserves.
+              </p>
+              <p
+                className={`text-xl font-semibold ${
+                  darkMode ? "text-[#F4F3DC]" : "text-[#2D151F]"
+                }`}
+              >
+                We don't just build websites. We help people build futures.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

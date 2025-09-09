@@ -5,8 +5,9 @@ import MediConnectImg from '../../assets/projects/mediConnect.png';
 import PlashoeImg from '../../assets/projects/plashoe.png';
 import GangothiriAquaImg from '../../assets/projects/plashoe.png';
 import BrightElectricalImg from '../../assets/projects/plashoe.png';
+import PortfolioImg from '../../assets/projects/Portfolio.png';
 
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 interface PortfolioProps {
   darkMode: boolean;
@@ -17,12 +18,13 @@ const Portfolio: React.FC<PortfolioProps> = ({ darkMode }) => {
   const [isPortfolio, setIsPortfolio] = useState(false);
 
   const [isHolographic, setIsHolographic] = useState(false);
-  const [viewMode, setViewMode] = useState<'showcase' | 'grid' | 'focus'>('showcase');
+  const [viewMode, setViewMode] = useState<'showcase' | 'grid' >('showcase');
   const [isAutoPlay, setIsAutoPlay] = useState(true);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
   const intervalRef = useRef<any | null>(null);
   const location = useLocation();
+  const navigate = useNavigate()
   useEffect(() => {
     setIsPortfolio(location.pathname.startsWith('/portfolio'));
   }, [location.pathname]);
@@ -156,9 +158,10 @@ const Portfolio: React.FC<PortfolioProps> = ({ darkMode }) => {
       primaryColor: "#002F6C", // Deep Blue from the logo
       secondaryColor: "#0074D9", // Bright Blue highlight
       glowColor: "rgba(0, 47, 108, 0.15)" // Matching soft blue glow
-    }, {
-      "name": "Personal Portfolio Website",
-      "subtitle": "Professional Developer Showcase",
+    }, 
+    {
+      name: "Personal Portfolio Website",
+      subtitle: "Professional Developer Showcase",
       "description": "A modern personal portfolio to showcase projects, skills, and experience. Built with responsive design, elegant UI, and smooth user experience to reflect a professional developer brand.",
       "year": "2025",
       "category": "Portfolio",
@@ -175,7 +178,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ darkMode }) => {
         "loadingSpeed": "100/100",
         "responsiveness": "100%"
       },
-      "image": "/projects/portfolio.png",
+      "image": PortfolioImg,
       "liveLink": "https://sanoof-portfolio.vercel.app",
       "primaryColor": "#6F4EF2",
       "secondaryColor": "#F3F4F6",
@@ -259,12 +262,13 @@ const Portfolio: React.FC<PortfolioProps> = ({ darkMode }) => {
 
 
   const currentProjectData = projects[currentProject];
+    const displayedProjects = isPortfolio ? projects : projects.slice(0, 3);
 
   return (
     <div
     id='portfolio'
       ref={containerRef}
-      className={`relative min-h-screen overflow-hidden ${darkMode ? 'bg-[#151f2d]' : 'bg-webzio-gold'}`}
+      className={`relative min-h-screen overflow-hidden ${darkMode ? 'bg-[#2D151F]' : 'bg-[#F4F3DC]'}`}
     >
       {/* Dynamic Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -331,7 +335,6 @@ const Portfolio: React.FC<PortfolioProps> = ({ darkMode }) => {
             <div className="flex justify-center space-x-2">
               {[
                 { mode: 'showcase', icon: Monitor, label: 'Showcase' },
-                { mode: 'focus', icon: Target, label: 'Focus' },
                 { mode: 'grid', icon: Globe, label: 'Grid' }
               ].map(({ mode, icon: Icon, label }) => (
                 <button
@@ -505,48 +508,10 @@ const Portfolio: React.FC<PortfolioProps> = ({ darkMode }) => {
 
           )}
 
-          {viewMode === 'focus' && (
-            <div className="max-w-5xl mx-auto text-center">
-              <div
-                className={`p-16 rounded-3xl ${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-2xl`}
-                style={{
-                  boxShadow: `0 25px 100px -12px ${currentProjectData.glowColor}`
-                }}
-              >
-                <div className="mb-8">
-                  <img
-                    src={currentProjectData.image}
-                    alt={currentProjectData.name}
-                    className="w-full max-w-2xl mx-auto rounded-xl shadow-2xl"
-                  />
-                </div>
-                <h2
-                  className="text-6xl font-black mb-6"
-                  style={{ color: currentProjectData.primaryColor }}
-                >
-                  {currentProjectData.name}
-                </h2>
-                <p className={`text-2xl mb-8 max-w-3xl mx-auto ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                  {currentProjectData.description}
-                </p>
-                <button
-                  onClick={() => window.open(currentProjectData.liveLink, "_blank")}
-                  className="px-12 py-6 rounded-full font-bold text-xl text-white transition-all duration-500 hover:scale-110 shadow-xl"
-                  style={{
-                    background: `linear-gradient(135deg, ${currentProjectData.primaryColor}, ${currentProjectData.secondaryColor})`,
-                    boxShadow: `0 15px 50px ${currentProjectData.glowColor}`
-                  }}
-                >
-                  Experience Now
-                </button>
-              </div>
-            </div>
-          )}
-
           {viewMode === 'grid' && (
             <div className="max-w-7xl mx-auto">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {projects.map((project, index) => (
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {displayedProjects.map((project, index) => (
                   <div
                     key={index}
                     onClick={() => {
@@ -565,7 +530,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ darkMode }) => {
                       <img
                         src={project.image}
                         alt={project.name}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        className="w-full h-full object-fill transition-transform duration-500 group-hover:scale-110"
                       />
 
                       {/* Overlay */}
@@ -576,6 +541,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ darkMode }) => {
                             style={{
                               background: `linear-gradient(135deg, ${project.primaryColor}, ${project.secondaryColor})`
                             }}
+                            onClick={() => window.open(project.liveLink, "_blank")}
                           >
                             View Project
                           </div>
@@ -626,6 +592,20 @@ const Portfolio: React.FC<PortfolioProps> = ({ darkMode }) => {
                   </div>
                 ))}
               </div>
+                {!isPortfolio && (
+   <div className="text-center mt-10">
+     <button
+       onClick={() => navigate("/portfolio")}
+       className="px-8 py-4 rounded-full font-bold text-white shadow-lg transition hover:scale-105"
+       style={{
+         background:
+           "linear-gradient(135deg, #6F4EF2, #EC4899)", // Gradient CTA
+       }}
+     >
+       View All Projects
+     </button>
+   </div>
+ )}
             </div>
           )}
         </div>

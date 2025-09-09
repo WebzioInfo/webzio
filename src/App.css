@@ -52,7 +52,7 @@ body {
   color: var(--color-text);
 }
 
-/* Dark theme */
+/* Dark theme
 [data-theme="dark"] {
   --color-bg: #0A0A0A;
   --color-surface: #171717;
@@ -61,7 +61,7 @@ body {
   --color-text: #E5E5E5;
   --color-border: #262626;
   --color-accent: #D4D4D4;
-}
+} */
 
 [data-theme="dark"] body {
   background-color: #0A0A0A;
