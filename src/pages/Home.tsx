@@ -11,8 +11,7 @@ const Home = ({ darkMode }: { darkMode: boolean }) => {
     <>
       {/* Hero Section */}
       <div
-        
-        className={darkMode ? "bg-webzio-primary text-webzio-secondary" : "bg-webzio-secondary text-webzio-primary"}
+        className={darkMode ? "bg-webzio-[#1A0E13] text-webzio-secondary " : "bg-webzio-bg-[#FAF9F6]  text-webzio-primary"}
       >
         <Hero darkMode={darkMode} />
       </div>
@@ -24,17 +23,17 @@ const Home = ({ darkMode }: { darkMode: boolean }) => {
       >
         <About darkMode={darkMode} />
       </div>
-      
+
       {/* Services Section */}
       <div
-      id="services"
+        id="services"
         data-aos="fade-up"
         className={darkMode ? "bg-webzio-dark text-webzio-secondary" : "bg-webzio-light text-webzio-primary"}
       >
         <Services darkMode={darkMode} />
       </div>
       <div
-      id="services"
+        id="services"
         data-aos="fade-up"
         className={darkMode ? "bg-webzio-dark text-webzio-secondary" : "bg-webzio-light text-webzio-primary"}
       >

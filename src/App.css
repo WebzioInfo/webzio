@@ -28,6 +28,17 @@
   --color-webzio-muted: #9CA3AF;        /* Muted text */
 }
 
+/* App.css or your CSS file */
+.hide-scrollbar {
+  overflow: auto;          /* allow scrolling */
+  scrollbar-width: none;    /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;            /* Chrome, Safari, Opera */
+}
+
 /* Smooth scroll wrapper */
 .smooth-wrapper {
   overflow: hidden;
@@ -46,6 +57,10 @@
   --color-border: #E5E5E5;
   --color-accent: #404040;
 }
+/* html {
+  scroll-behavior: smooth;
+} */
+
 
 body {
   background-color: #FFFFFF;

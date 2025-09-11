@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Menu, X, Moon, Sun } from "lucide-react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import {  useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion"; // ✅ Smooth animations
 import Logo from "../assets/Logos/webzioLOGO-01-cropped.png";
-import WhiteLogo from "../assets/Logos/WEBZIOLOGO5-01.png";
 
 import { HashLink } from "react-router-hash-link";
 
@@ -60,11 +59,18 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
 
   return (
     <div className="absolute">
-      <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-transparent">
+      <header
+      data-aos="fade-down"
+  data-aos-duration="800"
+      className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-transparent">
         <motion.div
           ref={menuRef}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
+           initial={{
+    width: "90vw", // 👈 matches expanded state
+    padding: "12px 24px",
+  }}
           animate={{
             width: isExpanded || isHovered || isMenuOpen ? "90vw" : "300px",
             padding: isExpanded || isHovered || isMenuOpen ? "12px 24px" : "8px 16px",
@@ -87,7 +93,7 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
               {/* Logo */}
               <motion.img
                 src={Logo}
-                
+                initial={{ height: 28 }}
                 alt="Webzio Logo"
                 animate={{ height: isExpanded || isHovered || isMenuOpen ? 28 : 26 }}
                 transition={{ duration: 0.3 }}
@@ -107,7 +113,7 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
                 {navItems.map((item) => (
                   <HashLink
                     key={item.name}
-                    to={item.to}
+                    smooth to={`/${item.to}`}
                     className={`
                       relative px-3 py-1.5 text-sm font-medium rounded-full transition-all duration-300
                       ${isCurrentRoute(item.to)
@@ -171,7 +177,7 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
           >
             <nav className="p-4 space-y-2">
               {navItems.map((item) => (
-                <Link
+                <HashLink
                   key={item.name}
                   to={item.to}
                   className={`
@@ -186,7 +192,7 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
                   `}
                 >
                   {item.name}
-                </Link>
+                </HashLink>
               ))}
             </nav>
           </motion.div>

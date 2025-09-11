@@ -113,7 +113,7 @@ const Services: React.FC<ServicesProps> = ({ darkMode }) => {
               key={index}
               data-aos={service.animation}
               data-aos-delay={index * 100}
-              className={`group p-8 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-2xl ${
+              className={`group p-8 rounded-2xl transition-transform transform duration-500 ease-in-out hover:scale-105 hover:shadow-2xl ${
                 darkMode
                   ? index % 2 === 0
                     ? "bg-[#2D151F]/90 border border-[#F4F3DC]/20"

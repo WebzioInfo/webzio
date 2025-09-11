@@ -38,48 +38,50 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
     }
   ];
 
-  useEffect(() => {
-    if (!planeRef.current || !builtSectionRef.current) return;
+useEffect(() => {
+  if (!planeRef.current || !builtSectionRef.current) return;
 
-    const animation = gsap.to(planeRef.current, {
-      scrollTrigger: {
-        trigger: builtSectionRef.current,
-        start: 'top center',
-        end: 'bottom top',
-        scrub: true,
-      },
-      motionPath: {
-        path: [
-          { x: 200, y: -20 },
-          { x: 300, y: 10 },
-          { x: 500, y: 100 },
-          { x: 750, y: -100 },
-          { x: 350, y: -50 },
-          { x: 600, y: -300 },
-          { x: 800, y: -150 },
-          { x: window.innerWidth, y: 150 },
-        ],
-        curviness: 1.25,
-        autoRotate: true,
-      },
-      ease: 'power1.inOut',
-      duration: 3,
-    });
+  const section = builtSectionRef.current;
+  const sectionWidth = section.offsetWidth;
+  const sectionHeight = section.offsetHeight;
 
-    return () => {
-      animation.kill();
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
-  }, []);
+  const animation = gsap.to(planeRef.current, {
+    scrollTrigger: {
+      trigger: builtSectionRef.current,
+      start: "top center",
+      end: "bottom top",
+      scrub: true,
+    },
+    motionPath: {
+      path: [
+        { x: 0, y: 0 },                        // start at bottom-left
+        { x: sectionWidth * 0.3, y: -100 },    // rise up a bit
+        { x: sectionWidth * 0.6, y: -50 },     // mid-air
+        { x: sectionWidth * 0.9, y: sectionHeight * 0.5 }, // land near bottom-right
+      ],
+      curviness: 1.5,
+      autoRotate: true,
+    },
+    ease: "power1.inOut",
+    duration: 3,
+  });
+
+  return () => {
+    animation.kill();
+    ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+  };
+}, []);
+
+
 
   return (
     <section
       id="about"
-      className={`py-20 transition-colors duration-500 ${
+      className={` transition-colors duration-500 ${
         darkMode ? "bg-[#1A0E13]" : "bg-[#FAF9F6]"
       }`}
     >
-      <div ref={builtSectionRef} className="relative text-center mb-32 overflow-hidden">
+      <div ref={builtSectionRef} className="relative py-20 text-center overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* === Built for Everyone Section === */}

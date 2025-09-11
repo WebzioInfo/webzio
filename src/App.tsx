@@ -14,6 +14,7 @@ import About from "./home/components/About";
 import Careers from "./home/components/Careers";
 import Contact from "./home/components/Contact";
 import NotFoundPage from "./pages/404/NotFoundPage";
+import Lenis from "@studio-freight/lenis";
 import "./App.css";
 
 function App() {
@@ -31,6 +32,16 @@ function App() {
     AOS.refresh();
   }, [location.pathname]);
 
+   useEffect(() => {
+    const lenis = new Lenis();
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+  }, []);
   // Load saved theme
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
@@ -56,8 +67,8 @@ function App() {
 
   return (
     <div
-      className={`min-h-screen transition-colors duration-500 ${
-        darkMode ? "bg-webzio-primary text-white" : "bg-webzio-secondary text-gray-900"
+      className={`min-h-screen hide-scrollbar transition-colors duration-500 ${
+        darkMode ? "bg-webzio-primary text-white" : "bg-[#FAF9F6] text-gray-900"
       }`}
     >
       

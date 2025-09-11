@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ExternalLink, ArrowLeft, ArrowRight, Sparkles, Target, Rocket, Monitor, Globe, Pause, Play } from 'lucide-react';
+import { ExternalLink, ArrowLeft, ArrowRight, Sparkles, Rocket, Monitor, Globe, Pause, Play } from 'lucide-react';
 import AdotzeeImg from '../../assets/projects/Adotzee.png';
 import MediConnectImg from '../../assets/projects/mediConnect.png';
 import PlashoeImg from '../../assets/projects/plashoe.png';
 import GangothiriAquaImg from '../../assets/projects/plashoe.png';
 import BrightElectricalImg from '../../assets/projects/plashoe.png';
 import PortfolioImg from '../../assets/projects/Portfolio.png';
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -527,12 +529,12 @@ const Portfolio: React.FC<PortfolioProps> = ({ darkMode }) => {
                     }}
                   >
                     <div className="aspect-video overflow-hidden">
-                      <img
-                        src={project.image}
-                        alt={project.name}
-                        className="w-full h-full object-fill transition-transform duration-500 group-hover:scale-110"
-                      />
-
+                       <LazyLoadImage
+    src={project.image}
+    alt={project.name}
+    effect="blur"
+    className="w-full h-full object-fill transition-transform duration-500 group-hover:scale-110"
+  />
                       {/* Overlay */}
                       <div className="absolute inset-0 hover:bg-black/10 bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
                         <div className="transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
