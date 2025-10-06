@@ -5,6 +5,7 @@ import About from "../home/components/About";
 import Contact from "../home/components/Contact";
 import Parallax from "../home/components/Parallax";
 import OurProducts from "../home/components/OurProducts";
+import InfiniteScroller from "../components/InfiniteScroller";
 
 const Home = ({ darkMode }: { darkMode: boolean }) => {
   return (
@@ -56,6 +57,8 @@ const Home = ({ darkMode }: { darkMode: boolean }) => {
       >
         <Parallax darkMode={darkMode} />
       </div>
+      
+      <InfiniteScroller />
 
       {/* Contact Section */}
       <div

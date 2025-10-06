@@ -30,8 +30,8 @@ const services = [
   const contactInfo = [
     { icon: <MapPin className="w-4 h-4" />, text: 'Kerala, India' },
     { icon: <Phone className="w-4 h-4" />, text: '+91 7907805626' },
-    { icon: <Mail className="w-4 h-4" />, text: 'support@webzio.in' },
-    { icon: <Globe className="w-4 h-4" />, text: 'www.webzio.in' }
+    { icon: <Mail className="w-4 h-4" />, text: 'webzio-info@gmail.com' },
+    { icon: <Globe className="w-4 h-4" />, text: 'webzio-info.vercel.app' }
   ];
 
   return (
@@ -55,10 +55,10 @@ const services = [
               <a href="https://www.instagram.com/webzi.o/" target='_blank' className="p-2 bg-webzio-secondary rounded-lg hover:bg-blue-600 transition-colors duration-300">
                 <Instagram className="w-5 h-5 text-webzio-primary/90" />
               </a>
-              <a href="#" className="p-2 bg-webzio-secondary rounded-lg hover:bg-blue-600 transition-colors duration-300">
+              <a href="https://www.linkedin.com/company/webzio" className="p-2 bg-webzio-secondary rounded-lg hover:bg-blue-600 transition-colors duration-300">
                 <Linkedin className="w-5 h-5 text-webzio-primary/90" />
               </a>
-              <a href="#" className="p-2 bg-webzio-secondary rounded-lg hover:bg-green-600 transition-colors duration-300">
+              <a href="tel:+917567856186"  className="p-2 bg-webzio-secondary rounded-lg hover:bg-green-600 transition-colors duration-300">
                 <Phone className="w-5 h-5 text-webzio-primary/90" />
               </a>
             </div>

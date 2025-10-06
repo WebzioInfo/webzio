@@ -81,6 +81,7 @@ useEffect(() => {
         darkMode ? "bg-[#1A0E13]" : "bg-[#FAF9F6]"
       }`}
     >
+      
       <div ref={builtSectionRef} className="relative py-20 text-center overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 

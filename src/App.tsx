@@ -68,7 +68,7 @@ function App() {
   return (
     <div
       className={`min-h-screen hide-scrollbar transition-colors duration-500 ${
-        darkMode ? "bg-webzio-primary text-white" : "bg-[#FAF9F6] text-gray-900"
+        darkMode ? "bg-webzio-primary text-white" : "bg-[#F4F3DC] text-gray-900"
       }`}
     >
       
