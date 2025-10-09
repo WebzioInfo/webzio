@@ -20,7 +20,7 @@ import OurProducts from "./home/components/OurProducts";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const location = useLocation();
 
   // Initialize AOS
@@ -55,7 +55,6 @@ function App() {
     localStorage.setItem("theme", darkMode ? "dark" : "light");
   }, [darkMode]);
 
-  const toggleDarkMode = () => setDarkMode((prev) => !prev);
   const handleLoadingComplete = () => setIsLoading(false);
 
   if (isLoading)
@@ -71,7 +70,7 @@ function App() {
       className="min-h-screen hide-scrollbar transition-colors duration-500 bg-[#F4F3DC] text-gray-900"
     >
       
-      <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      <Header />
 
       <main>
         <Routes>``
@@ -81,12 +80,12 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/contact" element={<Contact  />} />
-          <Route path="/products" element={<OurProducts darkMode={darkMode} />} />
+          <Route path="/products" element={<OurProducts />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
 
-      <Footer darkMode={darkMode} />
+      <Footer />
       <WhatsAppFloat />
       <CursorFollower />
     </div>

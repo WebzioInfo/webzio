@@ -3,8 +3,8 @@ import { ExternalLink, ArrowLeft, ArrowRight, Rocket, Monitor, Globe, Pause, Pla
 import AdotzeeImg from '../../assets/projects/Adotzee.png';
 import MediConnectImg from '../../assets/projects/mediConnect.png';
 import PlashoeImg from '../../assets/projects/plashoe.png';
-import GangothiriAquaImg from '../../assets/projects/plashoe.png';
-import BrightElectricalImg from '../../assets/projects/plashoe.png';
+import GangothiriAquaImg from '../../assets/projects/gangothri.png';
+import BrightElectricalImg from '../../assets/projects/bright.png';
 import PortfolioImg from '../../assets/projects/Portfolio.png';
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
@@ -271,13 +271,13 @@ const Portfolio: React.FC = () => {
 
         <div
           className="absolute w-80 h-80 rounded-full opacity-15 blur-3xl animate-pulse"
-          style={{
-            background: `linear-gradient(225deg, ${currentProjectData.secondaryColor}, ${currentProjectData.primaryColor})`,
-            bottom: '10%',
-            left: '10%',
-            transform: `translate(${mousePosition.x * -20}px, ${mousePosition.y * -20}px)`,
-            animationDelay: '2s'
-          }}
+          // style={{
+          //   background: `linear-gradient(225deg, ${currentProjectData.secondaryColor}, ${currentProjectData.primaryColor})`,
+          //   bottom: '10%',
+          //   left: '10%',
+          //   transform: `translate(${mousePosition.x * -20}px, ${mousePosition.y * -20}px)`,
+          //   animationDelay: '2s'
+          // }}
         />
 
         {/* Floating Geometric Shapes */}
@@ -309,7 +309,7 @@ const Portfolio: React.FC = () => {
 
 
             <h1
-              className="text-5xl md:text-6xl lg:text-7xl font-black mb-6 tracking-tight text-gray-900"
+              className="text-5xl md:text-6xl lg:text-7xl font-black mb-6 mt-20 tracking-tight text-webzio-primary"
               style={{
                 transform: `translate(${mousePosition.x * 5}px, ${mousePosition.y * 5}px)`
               }}
@@ -318,7 +318,7 @@ const Portfolio: React.FC = () => {
             </h1>
 
             <p className="text-xl md:text-2xl max-w-4xl mx-auto mb-8 leading-relaxed text-gray-600">
-              Crafting Digital Experiences That <span className="font-bold bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent">Transform</span> Ideas Into Reality
+              Crafting Digital Experiences That <span className="font-bold bg-gradient-to-r from-webzio-primary to-webzio-accent bg-clip-text text-transparent">Transform</span> Ideas Into Reality
             </p>
 
             {/* View Mode Selector */}
@@ -497,11 +497,11 @@ const Portfolio: React.FC = () => {
                     }}
                     className="relative group cursor-pointer transition-all duration-500 hover:scale-105 bg-white
                        rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl"
-                    style={{
-                      boxShadow: currentProject === index
-                        ? `0 25px 50px -12px ${project.glowColor}`
-                        : undefined
-                    }}
+                    // style={{
+                    //   boxShadow: currentProject === index
+                    //     ? `0 25px 50px -12px ${project.glowColor}`
+                    //     : undefined
+                    // }}
                   >
                     <div className="aspect-video overflow-hidden">
                       <LazyLoadImage
@@ -571,16 +571,23 @@ const Portfolio: React.FC = () => {
               </div>
               {!isPortfolio && (
                 <div className="text-center mt-10">
-                  <button
-                    onClick={() => navigate("/portfolio")}
-                    className="px-8 py-4 rounded-full font-bold text-white shadow-lg transition hover:scale-105"
-                    style={{
-                      background:
-                        "linear-gradient(135deg, #6F4EF2, #EC4899)", // Gradient CTA
-                    }}
-                  >
-                    View All Projects
-                  </button>
+<button
+  onClick={() => navigate("/portfolio")}
+  className="
+    relative px-8 py-4 rounded-2xl font-bold text-[#2D151F]
+    bg-white/20 backdrop-blur-[10px] border border-white/30
+    shadow-lg shadow-[#2D151F]/20
+    hover:bg-white/30 hover:shadow-[#2D151F]/40
+    transition-all duration-300 ease-in-out
+    hover:scale-105 active:scale-95
+  "
+>
+  View All Projects
+</button>
+
+
+
+
                 </div>
               )}
             </div>

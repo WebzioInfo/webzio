@@ -12,7 +12,7 @@ const Home = () => {
     <>
       {/* Hero Section */}
       <div
-        className="bg-webzio-bg-[#FAF9F6]  text-webzio-primary"
+        className="bg-[#FAF9F6]  text-webzio-primary"
       >
         <Hero />
       </div>
@@ -22,7 +22,7 @@ const Home = () => {
         data-aos="fade-up"
         className="bg-webzio-secondary text-webzio-primary"
       >
-        <About  />
+        <About />
       </div>
 
       {/* Services Section */}
@@ -31,7 +31,7 @@ const Home = () => {
         data-aos="fade-up"
         className="bg-webzio-light text-webzio-primary"
       >
-        <Services/>
+        <Services />
       </div>
       {/* <div
         id="products"
@@ -55,22 +55,22 @@ const Home = () => {
         data-aos="fade-up"
         className="bg-gradient-to-b from-webzio-light to-webzio-surface text-webzio-primary"
       >
-        <Parallax/>
+        <Parallax />
       </div>
-      
+
 
       {/* Contact Section */}
       <div
         data-aos="fade-up"
         className="bg-webzio-light text-webzio-primary"
       >
-        <Contact  />
+        <Contact />
       </div>
-       <div
+      <div
         data-aos="fade-up"
         className=""
       >
-      <InfiniteScroller />
+        <InfiniteScroller />
       </div>
     </>
   );

@@ -56,8 +56,8 @@ const Contact: React.FC = () => {
   const contactInfo = [
     { icon: <MapPin className="w-6 h-6" />, title: "Location", details: "Kerala, India" },
     { icon: <Phone className="w-6 h-6" />, title: "Phone", details: "+91 7907805626" },
-    { icon: <Mail className="w-6 h-6" />, title: "Email", details: "webzio-info@gmail.com" },
-    { icon: <Globe className="w-6 h-6" />, title: "Website", details: "webzio-info.vercel.app" },
+    { icon: <Mail className="w-6 h-6" />, title: "Email", details: "webzio.info@gmail.com" },
+    { icon: <Globe className="w-6 h-6" />, title: "Website", details: "www.webziointernational.in" },
   ];
 
   const services = [

@@ -2,11 +2,8 @@ import React from 'react';
 import { Code, Heart, MapPin, Phone, Mail, Globe, Instagram, Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import FooterLogo from "../assets/Logos/WEBZIOLOGO5-01.png";
-interface FooterProps {
-  darkMode: boolean;
-}
 
-const Footer: React.FC<FooterProps> = ({ darkMode }) => {
+const Footer: React.FC = () => {
   const quickLinks = [
     { name: 'Home', href: '/' },
     { name: 'Services', href: '/services' },
@@ -30,12 +27,12 @@ const services = [
   const contactInfo = [
     { icon: <MapPin className="w-4 h-4" />, text: 'Kerala, India' },
     { icon: <Phone className="w-4 h-4" />, text: '+91 7907805626' },
-    { icon: <Mail className="w-4 h-4" />, text: 'webzio-info@gmail.com' },
-    { icon: <Globe className="w-4 h-4" />, text: 'webzio-info.vercel.app' }
+    { icon: <Mail className="w-4 h-4" />, text: 'webzio.info@gmail.com' },
+    { icon: <Globe className="w-4 h-4" />, text: 'www.webziointernational.in' }
   ];
 
   return (
-    <footer className={`py-16 mx-4 rounded-t-xl  ${darkMode ? 'bg-[#3A1C28] border-t border-gray-900' : 'bg-[#3A1C28] text-white'}`}>
+    <footer className="py-16 mx-4 rounded-t-xl bg-[#3A1C28] text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-5">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Company Info */}

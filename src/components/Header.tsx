@@ -1,18 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Menu, X,  MoreHorizontal } from "lucide-react";
-import {  useLocation, useNavigate } from "react-router-dom";
+import { Menu, X, MoreHorizontal } from "lucide-react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion"; // ✅ Smooth animations
 import Logo from "../assets/Logos/webzioLOGO-01-cropped.png";
 
 import { HashLink } from "react-router-hash-link";
 
 
-interface HeaderProps {
-  darkMode: boolean;
-  toggleDarkMode: () => void;
-}
-
-const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
+const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -54,7 +49,7 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
     // { name: "Careers", to: "#careers" },
     { name: "Contact", to: "#contact" },
     { name: "Products", to: "#products" },
-    
+
   ];
 
   const isCurrentRoute = (path: string) => location.pathname === path;
@@ -62,17 +57,17 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
   return (
     <div className="absolute">
       <header
-      data-aos="fade-down"
-  data-aos-duration="800"
-      className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-transparent">
+        data-aos="fade-down"
+        data-aos-duration="800"
+        className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-transparent">
         <motion.div
           ref={menuRef}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-           initial={{
-    width: "90vw", // 👈 matches expanded state
-    padding: "12px 24px",
-  }}
+          initial={{
+            width: "90vw", // 👈 matches expanded state
+            padding: "12px 24px",
+          }}
           animate={{
             width: isExpanded || isHovered || isMenuOpen ? "90vw" : "300px",
             padding: isExpanded || isHovered || isMenuOpen ? "12px 24px" : "8px 16px",
@@ -85,9 +80,7 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
             className={`
               relative overflow-hidden backdrop-blur-xl rounded-full
               transition-all duration-500 ease-in-out p-2
-              ${darkMode
-                ? " bg-webzio-secondary/90 border border-webzio-gray/20"
-                : "bg-webzio-secondary/90 border border-webzio-gray/10"}
+            bg-webzio-secondary/90 border border-webzio-gray/10
               ${isExpanded || isHovered || isMenuOpen ? "shadow-2xl" : "shadow-lg"}
             `}
           >
@@ -100,7 +93,7 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
                 animate={{ height: isExpanded || isHovered || isMenuOpen ? 28 : 26 }}
                 transition={{ duration: 0.3 }}
                 className="transition-all duration-300 p-1.5"
-                onClick={()=>navigate('/')}
+                onClick={() => navigate('/')}
               />
 
               {/* Desktop Nav */}
@@ -119,10 +112,8 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
                     className={`
                       relative px-3 py-1.5 text-sm font-medium rounded-full transition-all duration-300
                       ${isCurrentRoute(item.to)
-                        ? darkMode
-                          ? "bg-webzio-secondary text-webzio-primary"
-                          : "bg-webzio-primary text-webzio-secondary"
-                        :  "text-webzio-primary hover:bg-webzio-primary/10"}
+                        ? "bg-webzio-primary text-webzio-secondary"
+                        : "text-webzio-primary hover:bg-webzio-primary/10"}
                     `}
                   >
                     {item.name}
@@ -133,28 +124,28 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
               {/* Actions */}
               <div className="flex items-center space-x-2">
                 {/* Theme Toggle */}
+                {!isExpanded && !isHovered && (
+
                 <motion.button
-                  onClick={toggleDarkMode}
+
                   whileTap={{ scale: 0.9 }}
-                  className={`
-                    p-2 rounded-full transition-all duration-300
-                    ${ "bg-webzio-primary/10 text-webzio-primary hover:bg-webzio-primary/20"}
+                  className={`hidden md:block
+                    p-2 rounded-full transition-all duration-300  bg-webzio-primary/10 text-webzio-primary hover:bg-webzio-primary/20
+
                   `}
                 >
-                  <MoreHorizontal/>
+                  <MoreHorizontal />
                   {/* {darkMode ? <Sun size={16} /> : <Moon size={16} />} */}
                 </motion.button>
+                )}
 
                 {/* Mobile Menu Toggle */}
                 <motion.button
                   onClick={() => setIsMenuOpen((prev) => !prev)}
                   whileTap={{ scale: 0.9 }}
-                  className={`
+                  className="
                     md:hidden p-2 rounded-full transition-all duration-300
-                    ${darkMode
-                      ? "bg-webzio-secondary/10 text-webzio-secondary hover:bg-webzio-secondary/20"
-                      : "bg-webzio-primary/10 text-webzio-primary hover:bg-webzio-primary/20"}
-                  `}
+                  bg-webzio-primary/10 text-webzio-primary hover:bg-webzio-primary/20"
                 >
                   {isMenuOpen ? <X size={18} /> : <Menu size={18} />}
                 </motion.button>
@@ -171,28 +162,16 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
                 : { opacity: 0, scale: 0.95, y: -10 }
             }
             transition={{ duration: 0.4 }}
-            className={`
-              md:hidden mt-2 rounded-3xl backdrop-blur-xl overflow-hidden
-              ${darkMode
-                ? "bg-webzio-primary/95 border border-webzio-gray/20"
-                : "bg-webzio-secondary/95 border border-webzio-gray/10"}
-            `}
-          >
+            className="md:hidden mt-2 rounded-3xl backdrop-blur-xl overflow-hidden bg-webzio-secondary/95 border border-webzio-gray/10">
             <nav className="p-4 space-y-2">
               {navItems.map((item) => (
                 <HashLink
                   key={item.name}
                   to={item.to}
-                  className={`
-                    block px-4 py-3 text-sm font-medium rounded-2xl transition-colors duration-300
+                  className={`block px-4 py-3 text-sm font-medium rounded-2xl transition-colors duration-300
                     ${isCurrentRoute(item.to)
-                      ? darkMode
-                        ? "bg-webzio-secondary text-webzio-primary"
-                        : "bg-webzio-primary text-webzio-secondary"
-                      : darkMode
-                        ? "text-webzio-secondary hover:bg-webzio-secondary/10"
-                        : "text-webzio-primary hover:bg-webzio-primary/10"}
-                  `}
+                      ? "bg-webzio-primary text-webzio-secondary"
+                      : "text-webzio-primary hover:bg-webzio-primary/10"}`}
                 >
                   {item.name}
                 </HashLink>
@@ -203,7 +182,7 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
       </header>
 
       {/* Spacer so content isn’t hidden under header */}
-      <div className="h-20"></div>
+      <div className="h-28"></div>
     </div>
   );
 };
