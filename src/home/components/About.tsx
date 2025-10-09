@@ -3,7 +3,7 @@ import { Target, Heart, Code, Smartphone } from 'lucide-react';
 import gsap from 'gsap';
 import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import planePng from '../../assets/paper.png'
+import planePng from '../../assets/paper.png';
 
 gsap.registerPlugin(MotionPathPlugin, ScrollTrigger);
 
