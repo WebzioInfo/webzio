@@ -1,5 +1,5 @@
 // src/pages/OurProducts.tsx
-import { GlassWater, Heart, Droplet, ShoppingCart } from "lucide-react";
+import { Heart, Droplet, ShoppingCart } from "lucide-react";
 import React from "react";
 
 interface OurProductsProps {
@@ -51,15 +51,16 @@ const products = [
       "Smart reports & dashboards",
     ],
     icon: <Droplet className="text-cyan-500 w-12 h-12 mb-4" />,
-    pdf: "/docs/AquaSmart_Business_Proposal_064418.pdf", // make sure this PDF is placed in public/docs
+    pdf: "/docs/AquaSmart_Business_Proposal_064418.pdf",
   },
 ];
 
 const OurProducts: React.FC<OurProductsProps> = ({ darkMode }) => {
   return (
     <div
+
       className={`min-h-screen py-16 px-4 md:px-12 transition-colors duration-500 ${
-        darkMode ? "bg-webzio-primary" : "bg-webzio-secondary"
+        darkMode ? "bg-[#1A0E13]" : "bg-webzio-secondary"
       }`}
     >
       {/* Header */}
@@ -130,25 +131,7 @@ const OurProducts: React.FC<OurProductsProps> = ({ darkMode }) => {
         ))}
       </div>
 
-      {/* CTA Section */}
-      <div className="mt-20 text-center">
-        <h3
-          className={`text-3xl font-semibold mb-4 ${
-            darkMode ? "text-webzio-secondary" : "text-webzio-primary"
-          }`}
-        >
-          Why Choose Webzio?
-        </h3>
-        <p
-          className={`text-lg max-w-2xl mx-auto ${
-            darkMode ? "text-webzio-secondary/80" : "text-webzio-gray"
-          }`}
-        >
-          We provide custom solutions for businesses, easy integration and
-          support, and scalable user-friendly platforms to grow your operations
-          efficiently.
-        </p>
-      </div>
+    
     </div>
   );
 };

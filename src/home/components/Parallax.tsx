@@ -31,7 +31,7 @@ function ParallaxText({ children, baseVelocity = 100 }: ParallaxProps) {
 
   useAnimationFrame((t, delta) => {
     let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
-
+    t;
     if (velocityFactor.get() < 0) {
       directionFactor.current = -1;
     } else if (velocityFactor.get() > 0) {
@@ -60,14 +60,11 @@ function ParallaxText({ children, baseVelocity = 100 }: ParallaxProps) {
   );
 }
 
-export default function Parallax({ darkMode }: { darkMode: boolean }) {
+export default function Parallax() {
   return (
     <section
-      className={`relative w-full flex flex-col justify-center items-center py-20 transition-colors duration-500
-      ${darkMode
-        ? "bg-gradient-to-br from-[#351717] to-[#2C2C2C] text-gray-100"
-        : "bg-gradient-to-br from-[#F4F3DC] to-[#EADFD4] text-[#2D151F]"
-      }`}
+      className="relative w-full flex flex-col justify-center items-center py-20 transition-colors duration-500 
+        bg-gradient-to-br from-[#F4F3DC] to-[#EADFD4] text-[#2D151F]"
     >
       <div className="w-full">
         <ParallaxText baseVelocity={-5}>YOUR VISION,</ParallaxText>
@@ -75,8 +72,8 @@ export default function Parallax({ darkMode }: { darkMode: boolean }) {
       </div>
 
       <p
-        className={`mt-16 text-center max-w-2xl text-lg sm:text-xl md:text-2xl font-medium leading-relaxed
-        ${darkMode ? "text-gray-300" : "text-gray-700"}`}
+        className="mt-16 text-center max-w-2xl text-lg sm:text-xl md:text-2xl font-medium leading-relaxed
+       text-gray-700"
       >
         Turning your ideas into reality with{" "}
         <span className="font-bold">elegant code</span> and{" "}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Menu, X, Moon, Sun } from "lucide-react";
+import { Menu, X,  MoreHorizontal } from "lucide-react";
 import {  useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion"; // ✅ Smooth animations
 import Logo from "../assets/Logos/webzioLOGO-01-cropped.png";
@@ -53,6 +53,8 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
     { name: "About", to: "#about" },
     // { name: "Careers", to: "#careers" },
     { name: "Contact", to: "#contact" },
+    { name: "Products", to: "#products" },
+    
   ];
 
   const isCurrentRoute = (path: string) => location.pathname === path;
@@ -139,7 +141,8 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
                     ${ "bg-webzio-primary/10 text-webzio-primary hover:bg-webzio-primary/20"}
                   `}
                 >
-                  {darkMode ? <Sun size={16} /> : <Moon size={16} />}
+                  <MoreHorizontal/>
+                  {/* {darkMode ? <Sun size={16} /> : <Moon size={16} />} */}
                 </motion.button>
 
                 {/* Mobile Menu Toggle */}
