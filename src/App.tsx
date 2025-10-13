@@ -18,11 +18,14 @@ import "./App.css";
 import OurProducts from "./home/components/OurProducts";
 import LoadingPage from "./components/LoadingPage";
 import { AnimatePresence } from "framer-motion";
-import Logo3D from "./components/Logo3D";
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
   const location = useLocation();
+
+  useEffect(()=>{
+    setIsLoading(false);
+  },[])
 
   // AOS initialization
   useEffect(() => {
@@ -62,7 +65,6 @@ function App() {
               <Route path="/careers" element={<Careers />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/products" element={<OurProducts />} />
-              <Route path="/logo" element={<Logo3D />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </main>
