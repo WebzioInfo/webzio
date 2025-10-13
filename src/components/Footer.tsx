@@ -1,7 +1,7 @@
 import React from 'react';
 import { MapPin, Phone, Mail, Globe, Instagram, Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import FooterLogo from "../assets/Logos/WEBZIOLOGO5-01.png";
+import FooterLogo from "../assets/Logos/WEBZIOLOGO5-01.webp";
 
 const Footer: React.FC = () => {
   const quickLinks = [

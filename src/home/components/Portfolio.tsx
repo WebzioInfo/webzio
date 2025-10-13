@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ExternalLink, ArrowLeft, ArrowRight, Rocket, Monitor, Globe, Pause, Play } from 'lucide-react';
-import AdotzeeImg from '../../assets/projects/Adotzee.png';
-import MediConnectImg from '../../assets/projects/mediConnect.png';
-import PlashoeImg from '../../assets/projects/plashoe.png';
-import GangothiriAquaImg from '../../assets/projects/gangothri.png';
-import BrightElectricalImg from '../../assets/projects/bright.png';
-import PortfolioImg from '../../assets/projects/Portfolio.png';
+import AdotzeeImg from '../../assets/projects/Adotzee.webp';
+import MediConnectImg from '../../assets/projects/mediConnect.webp';
+import PlashoeImg from '../../assets/projects/plashoe.webp';
+import GangothiriAquaImg from '../../assets/projects/gangothri.webp';
+import BrightElectricalImg from '../../assets/projects/bright.webp';
+import PortfolioImg from '../../assets/projects/Portfolio.webp';
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 

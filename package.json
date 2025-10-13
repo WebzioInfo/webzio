@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+"optimize-images": "node scripts/optimize-images.js"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
@@ -51,6 +52,7 @@
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.3.0",
     "rollup": "^4.52.4",
+    "sharp-cli": "^5.2.0",
     "typescript": "^5.8.3",
     "vite": "^7.0.4"
   }

@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import BrightLogo from '../assets/ClientLogos/BrightLogo.png';
-import Gangothri from '../assets/ClientLogos/GongothriLogo.png';
-import AdotzeeLogo from '../assets/ClientLogos/Adotzee.png';
-import BrainBayLogo from '../assets/ClientLogos/BrainbayLogo.png';
-import EssarLogo from '../assets/ClientLogos/EssarLogo.png';
-import Code7Logo from '../assets/ClientLogos/Code7Logo.png';
-// import BiofixLogo from '../assets/ClientLogos/BiofixLogo.png';
-import BiofixLogo2 from '../assets/ClientLogos/BiofixLogo2.png'
+import BrightLogo from '../assets/ClientLogos/BrightLogo.webp';
+import Gangothri from '../assets/ClientLogos/GongothriLogo.webp';
+import AdotzeeLogo from '../assets/ClientLogos/Adotzee.webp';
+import BrainBayLogo from '../assets/ClientLogos/BrainbayLogo.webp';
+import EssarLogo from '../assets/ClientLogos/EssarLogo.webp';
+import Code7Logo from '../assets/ClientLogos/Code7Logo.webp';
+// import BiofixLogo from '../assets/ClientLogos/BiofixLogo.w';
+import BiofixLogo2 from '../assets/ClientLogos/BiofixLogo2.webp'
 
 // Hardcoded client logos
 const clientLogos = [
