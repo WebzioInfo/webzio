@@ -18,11 +18,17 @@ import "./App.css";
 import OurProducts from "./home/components/OurProducts";
 import LoadingPage from "./components/LoadingPage";
 import { AnimatePresence } from "framer-motion";
-import Logo3D from "./components/Logo3D";
 
 function App() {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
+
+  // Simulate a short loading for first render
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 500); // 500ms minimum loading
+    return () => clearTimeout(timer);
+  }, []);
+
 
   // AOS initialization
   useEffect(() => {
@@ -47,7 +53,7 @@ function App() {
   if (isLoading) return <LoadingPage />;
 
   return (
-     <AnimatePresence mode="wait">
+    <AnimatePresence mode="wait">
       {isLoading ? (
         <LoadingPage key="loading" />
       ) : (
@@ -62,7 +68,6 @@ function App() {
               <Route path="/careers" element={<Careers />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/products" element={<OurProducts />} />
-              <Route path="/logo" element={<Logo3D />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </main>
