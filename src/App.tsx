@@ -20,12 +20,15 @@ import LoadingPage from "./components/LoadingPage";
 import { AnimatePresence } from "framer-motion";
 
 function App() {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
 
-  useEffect(()=>{
-    setIsLoading(false);
-  },[])
+  // Simulate a short loading for first render
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 500); // 500ms minimum loading
+    return () => clearTimeout(timer);
+  }, []);
+
 
   // AOS initialization
   useEffect(() => {
@@ -50,7 +53,7 @@ function App() {
   if (isLoading) return <LoadingPage />;
 
   return (
-     <AnimatePresence mode="wait">
+    <AnimatePresence mode="wait">
       {isLoading ? (
         <LoadingPage key="loading" />
       ) : (
