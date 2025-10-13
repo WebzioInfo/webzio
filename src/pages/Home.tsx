@@ -6,10 +6,19 @@ import Contact from "../home/components/Contact";
 import Parallax from "../home/components/Parallax";
 // import OurProducts from "../home/components/OurProducts";
 import InfiniteScroller from "../components/InfiniteScroller";
+import { Helmet } from "react-helmet";
 
 const Home = () => {
   return (
     <>
+    <Helmet>
+  <title>Webzio International | Web Development & Branding Agency</title>
+  <meta
+    name="description"
+    content="Webzio International builds powerful websites, apps, and brands with modern technology and creative design."
+  />
+  <meta name="keywords" content="web design, react development, branding, seo, kerala, india" />
+</Helmet>
       {/* Hero Section */}
       <div
         className="bg-[#FAF9F6]  text-webzio-primary"
