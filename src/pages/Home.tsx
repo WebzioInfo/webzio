@@ -4,68 +4,73 @@ import Portfolio from "../home/components/Portfolio";
 import About from "../home/components/About";
 import Contact from "../home/components/Contact";
 import Parallax from "../home/components/Parallax";
-import OurProducts from "../home/components/OurProducts";
+// import OurProducts from "../home/components/OurProducts";
 import InfiniteScroller from "../components/InfiniteScroller";
 
-const Home = ({ darkMode }: { darkMode: boolean }) => {
+const Home = () => {
   return (
     <>
       {/* Hero Section */}
       <div
-        className={darkMode ? "bg-webzio-[#1A0E13] text-webzio-secondary " : "bg-webzio-bg-[#FAF9F6]  text-webzio-primary"}
+        className="bg-[#FAF9F6]  text-webzio-primary"
       >
-        <Hero darkMode={darkMode} />
+        <Hero />
       </div>
 
       {/* About Section */}
       <div
         data-aos="fade-up"
-        className={darkMode ? "bg-webzio-primary text-webzio-secondary" : "bg-webzio-secondary text-webzio-primary"}
+        className="bg-webzio-secondary text-webzio-primary"
       >
-        <About darkMode={darkMode} />
+        <About />
       </div>
 
       {/* Services Section */}
       <div
         id="services"
         data-aos="fade-up"
-        className={darkMode ? "bg-webzio-dark text-webzio-secondary" : "bg-webzio-light text-webzio-primary"}
+        className="bg-webzio-light text-webzio-primary"
       >
-        <Services darkMode={darkMode} />
+        <Services />
       </div>
-      <div
-        id="services"
+      {/* <div
+        id="products"
         data-aos="fade-up"
         className={darkMode ? "bg-webzio-dark text-webzio-secondary" : "bg-webzio-light text-webzio-primary"}
       >
         <OurProducts darkMode={darkMode} />
-      </div>
+      </div> */}
 
       {/* Portfolio Section */}
       <div
         data-aos="fade-up"
-        className={darkMode ? "bg-webzio-contrast text-webzio-secondary" : "bg-webzio-surface text-webzio-primary"}
+        className="bg-webzio-surface text-webzio-primary"
       >
-        <Portfolio darkMode={darkMode} />
+        <Portfolio />
       </div>
 
 
       {/* Parallax Section */}
       <div
         data-aos="fade-up"
-        className={darkMode ? "bg-gradient-to-b from-webzio-dark to-webzio-contrast text-webzio-secondary" : "bg-gradient-to-b from-webzio-light to-webzio-surface text-webzio-primary"}
+        className="bg-gradient-to-b from-webzio-light to-webzio-surface text-webzio-primary"
       >
-        <Parallax darkMode={darkMode} />
+        <Parallax />
       </div>
-      
-      <InfiniteScroller />
+
 
       {/* Contact Section */}
       <div
         data-aos="fade-up"
-        className={darkMode ? "bg-webzio-dark text-webzio-secondary" : "bg-webzio-light text-webzio-primary"}
+        className="bg-webzio-light text-webzio-primary"
       >
-        <Contact darkMode={darkMode} />
+        <Contact />
+      </div>
+      <div
+        data-aos="fade-up"
+        className=""
+      >
+        <InfiniteScroller />
       </div>
     </>
   );

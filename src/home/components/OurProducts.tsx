@@ -1,10 +1,6 @@
 // src/pages/OurProducts.tsx
-import { GlassWater, Heart, Droplet, ShoppingCart } from "lucide-react";
+import { Heart, Droplet, ShoppingCart } from "lucide-react";
 import React from "react";
-
-interface OurProductsProps {
-  darkMode: boolean;
-}
 
 const products = [
   {
@@ -51,31 +47,25 @@ const products = [
       "Smart reports & dashboards",
     ],
     icon: <Droplet className="text-cyan-500 w-12 h-12 mb-4" />,
-    pdf: "/docs/AquaSmart_Business_Proposal_064418.pdf", // make sure this PDF is placed in public/docs
+    pdf: "/docs/AquaSmart_Business_Proposal_064418.pdf",
   },
 ];
 
-const OurProducts: React.FC<OurProductsProps> = ({ darkMode }) => {
+const OurProducts: React.FC = () => {
   return (
     <div
-      className={`min-h-screen py-16 px-4 md:px-12 transition-colors duration-500 ${
-        darkMode ? "bg-webzio-primary" : "bg-webzio-secondary"
-      }`}
+
+      className="min-h-screen py-16 px-4 md:px-12 transition-colors duration-500 bg-webzio-secondary"
     >
       {/* Header */}
       <div className="text-center mb-16">
         <h1
-          className={`text-4xl md:text-5xl font-bold ${
-            darkMode ? "text-webzio-secondary" : "text-webzio-primary"
-          }`}
+          className="text-4xl md:text-5xl font-bold text-webzio-primary"
         >
           Our Products
         </h1>
         <p
-          className={`mt-4 text-lg md:text-xl ${
-            darkMode ? "text-webzio-secondary/80" : "text-webzio-gray"
-          }`}
-        >
+          className="mt-4 text-lg md:text-xl text-webzio-gray"        >
           Innovative solutions tailored for your business needs
         </p>
       </div>
@@ -85,30 +75,23 @@ const OurProducts: React.FC<OurProductsProps> = ({ darkMode }) => {
         {products.map((product) => (
           <div
             key={product.id}
-            className={`p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 flex flex-col justify-between ${
-              darkMode ? "bg-webzio-secondary" : "bg-webzio-surface"
-            }`}
+            className="p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 flex flex-col justify-between bg-webzio-surface"
+
           >
             <div className="flex flex-col items-center text-center">
               {product.icon}
               <h2
-                className={`text-2xl font-semibold mb-4 ${
-                  darkMode ? "text-webzio-primary" : "text-webzio-primary"
-                }`}
+                className="text-2xl font-semibold mb-4 text-webzio-primary"
               >
                 {product.name}
               </h2>
               <p
-                className={`mb-6 ${
-                  darkMode ? "text-webzio-primary/80" : "text-webzio-gray"
-                }`}
+                className="mb-6 text-webzio-gray"
               >
                 {product.description}
               </p>
               <ul
-                className={`list-disc list-inside space-y-2 mb-6 text-left ${
-                  darkMode ? "text-webzio-muted/90" : "text-webzio-muted"
-                }`}
+                className="list-disc list-inside space-y-2 mb-6 text-left text-webzio-muted"
               >
                 {product.features.map((feature, idx) => (
                   <li key={idx}>{feature}</li>
@@ -117,11 +100,7 @@ const OurProducts: React.FC<OurProductsProps> = ({ darkMode }) => {
             </div>
             <div className="flex flex-col sm:flex-row gap-3 justify-center mt-4">
               <button
-                className={`px-6 py-2 rounded-full hover:scale-105 transition-transform font-medium ${
-                  darkMode
-                    ? "bg-webzio-secondary text-webzio-primary border border-webzio-primary hover:bg-webzio-primary hover:text-webzio-secondary"
-                    : "bg-webzio-primary text-webzio-secondary"
-                }`}
+                className="px-6 py-2 rounded-full hover:scale-105 transition-transform font-medium bg-webzio-primary text-webzio-secondary"
               >
                 Learn More
               </button>
@@ -130,25 +109,7 @@ const OurProducts: React.FC<OurProductsProps> = ({ darkMode }) => {
         ))}
       </div>
 
-      {/* CTA Section */}
-      <div className="mt-20 text-center">
-        <h3
-          className={`text-3xl font-semibold mb-4 ${
-            darkMode ? "text-webzio-secondary" : "text-webzio-primary"
-          }`}
-        >
-          Why Choose Webzio?
-        </h3>
-        <p
-          className={`text-lg max-w-2xl mx-auto ${
-            darkMode ? "text-webzio-secondary/80" : "text-webzio-gray"
-          }`}
-        >
-          We provide custom solutions for businesses, easy integration and
-          support, and scalable user-friendly platforms to grow your operations
-          efficiently.
-        </p>
-      </div>
+
     </div>
   );
 };
