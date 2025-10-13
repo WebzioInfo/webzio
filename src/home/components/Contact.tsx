@@ -114,14 +114,22 @@ const Contact: React.FC = () => {
             </div>
 
             <div className="mt-10 space-y-4">
-              <button className="w-full bg-green-600 text-white px-6 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl flex items-center justify-center space-x-2">
+              <button
+                aria-label="Contact us on WhatsApp"
+                className="w-full bg-green-600 text-white px-6 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl flex items-center justify-center space-x-2"
+              >
                 <Phone className="w-5 h-5" />
                 <span>WhatsApp Us</span>
               </button>
-              <button className="w-full px-6 py-4 rounded-xl font-semibold text-lg border border-[#2D151F]/30 text-[#2D151F] hover:bg-[#2D151F]/10 transition-all duration-300 hover:scale-105 flex items-center justify-center space-x-2">
+
+              <button
+                aria-label="Send us an email"
+                className="w-full px-6 py-4 rounded-xl font-semibold text-lg border border-[#2D151F]/30 text-[#2D151F] hover:bg-[#2D151F]/10 transition-all duration-300 hover:scale-105 flex items-center justify-center space-x-2"
+              >
                 <Mail className="w-5 h-5" />
                 <span>Send Email</span>
               </button>
+
             </div>
           </div>
 
@@ -179,20 +187,28 @@ const Contact: React.FC = () => {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold mb-2 text-[#2D151F]">Service Needed</label>
+                    <label htmlFor="service" className="block text-sm font-semibold mb-2 text-[#2D151F]">
+                      Service Needed *
+                    </label>
                     <select
+                      id="service"
                       name="service"
                       value={formData.service}
                       onChange={handleInputChange}
+                      required
                       className="w-full px-4 py-3 rounded-lg border border-[#2D151F]/30 text-[#2D151F] bg-white focus:outline-none focus:ring-2 focus:ring-[#2D151F]/50"
                     >
-                      <option value="">Select a service</option>
+                      <option value="" disabled>
+                        Select a service
+                      </option>
                       {services.map((service, index) => (
                         <option key={index} value={service}>
                           {service}
                         </option>
                       ))}
                     </select>
+
+
                   </div>
                 </div>
 
@@ -214,11 +230,10 @@ const Contact: React.FC = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`w-full py-4 rounded-lg font-semibold text-lg flex items-center justify-center space-x-2 transition-all duration-300 hover:scale-105 ${
-                    isSubmitting
+                  className={`w-full py-4 rounded-lg font-semibold text-lg flex items-center justify-center space-x-2 transition-all duration-300 hover:scale-105 ${isSubmitting
                       ? "bg-gray-400 cursor-not-allowed"
                       : "bg-gradient-to-r from-[#2D151F] to-[#6D2C3B] text-[#F4F3DC] hover:shadow-xl"
-                  }`}
+                    }`}
                 >
                   {isSubmitting ? (
                     <>
