@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="2048" height="2048" viewBox="0 0 2048 2048" role="img" aria-label="Logo">
+  <g fill="#F6F6E0" fill-rule="evenodd" stroke="none">
+    <path d="M560 480 L896 480 L896 740 L1030 880 L768 1152 L512 896 L512 480 Z"/>
+    <path d="M1488 480 L1152 480 L1152 740 L1018 880 L1280 1152 L1536 896 L1536 480 Z"/>
+    <polygon points="1024,896 1048,920 1024,944 1000,920"/>
+  </g>
+</svg>

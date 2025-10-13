@@ -49,13 +49,13 @@ const services = [
               Digital Solutions, Built for Everyone. From personal websites to powerful business apps — we do it all.
             </p>
             <div className="flex space-x-4">
-              <a href="https://www.instagram.com/webzi.o/" target='_blank' className="p-2 bg-webzio-secondary rounded-lg hover:bg-blue-600 transition-colors duration-300">
+              <a href="https://www.instagram.com/webzi.o/" aria-label="Instagram" target='_blank' className="p-2 bg-webzio-secondary rounded-lg hover:bg-blue-600 transition-colors duration-300">
                 <Instagram className="w-5 h-5 text-webzio-primary/90" />
               </a>
-              <a href="https://www.linkedin.com/company/webzio" className="p-2 bg-webzio-secondary rounded-lg hover:bg-blue-600 transition-colors duration-300">
+              <a href="https://www.linkedin.com/company/webzio" aria-label="LinkedIn" className="p-2 bg-webzio-secondary rounded-lg hover:bg-blue-600 transition-colors duration-300">
                 <Linkedin className="w-5 h-5 text-webzio-primary/90" />
               </a>
-              <a href="tel:+917567856186"  className="p-2 bg-webzio-secondary rounded-lg hover:bg-green-600 transition-colors duration-300">
+              <a href="tel:+917907805626" aria-label="Call us" className="p-2 bg-webzio-secondary rounded-lg hover:bg-green-600 transition-colors duration-300">
                 <Phone className="w-5 h-5 text-webzio-primary/90" />
               </a>
             </div>

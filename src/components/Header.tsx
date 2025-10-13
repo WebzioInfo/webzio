@@ -127,7 +127,8 @@ const Header: React.FC = () => {
                 {!isExpanded && !isHovered && (
 
                 <motion.button
-
+aria-label="More options"
+title="More options"
                   whileTap={{ scale: 0.9 }}
                   className={`hidden md:block
                     p-2 rounded-full transition-all duration-300  bg-webzio-primary/10 text-webzio-primary hover:bg-webzio-primary/20
@@ -135,7 +136,6 @@ const Header: React.FC = () => {
                   `}
                 >
                   <MoreHorizontal />
-                  {/* {darkMode ? <Sun size={16} /> : <Moon size={16} />} */}
                 </motion.button>
                 )}
 
@@ -143,6 +143,8 @@ const Header: React.FC = () => {
                 <motion.button
                   onClick={() => setIsMenuOpen((prev) => !prev)}
                   whileTap={{ scale: 0.9 }}
+                  aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+
                   className="
                     md:hidden p-2 rounded-full transition-all duration-300
                   bg-webzio-primary/10 text-webzio-primary hover:bg-webzio-primary/20"

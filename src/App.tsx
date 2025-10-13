@@ -4,7 +4,6 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import WhatsAppFloat from "./components/WhatsAppFloat";
 import CursorFollower from "./components/CursorFollower";
-import LoadingPage from "./components/LoadingPage";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Home from "./pages/Home";
@@ -17,95 +16,62 @@ import NotFoundPage from "./pages/404/NotFoundPage";
 import Lenis from "@studio-freight/lenis";
 import "./App.css";
 import OurProducts from "./home/components/OurProducts";
+import LoadingPage from "./components/LoadingPage";
+import { AnimatePresence } from "framer-motion";
+import Logo3D from "./components/Logo3D";
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const location = useLocation();
 
-   const [isOnline, setIsOnline] = useState(navigator.onLine);
-
+  // AOS initialization
   useEffect(() => {
-    const handleOnline = () => setIsOnline(true);
-    const handleOffline = () => setIsOnline(false);
-
-    window.addEventListener("online", handleOnline);
-    window.addEventListener("offline", handleOffline);
-
-    return () => {
-      window.removeEventListener("online", handleOnline);
-      window.removeEventListener("offline", handleOffline);
-    };
-  }, []);
-if(!isOnline){
-  return <h1>Offline</h1>
-}
-  // Initialize AOS
-  useEffect(() => {
-    AOS.init({ duration: 600, once: true, easing: "ease-out" });
+    AOS.init({ duration: 700, once: true, easing: "ease-out" });
   }, []);
 
-  // Refresh AOS on route change
   useEffect(() => {
     AOS.refresh();
   }, [location.pathname]);
 
-   useEffect(() => {
+  // Lenis smooth scroll
+  useEffect(() => {
     const lenis = new Lenis();
-
     function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
-
     requestAnimationFrame(raf);
   }, []);
 
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) setDarkMode(savedTheme === "dark");
-  }, []);
 
-  // Apply theme to <html>
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", darkMode);
-    localStorage.setItem("theme", darkMode ? "dark" : "light");
-  }, [darkMode]);
-
-  const handleLoadingComplete = () => setIsLoading(false);
-
-  if (isLoading)
-    return (
-      <LoadingPage
-        onLoadingComplete={handleLoadingComplete}
-        loadingDuration={1.5}
-      />
-    );
+  if (isLoading) return <LoadingPage />;
 
   return (
-    <div
-      className="min-h-screen hide-scrollbar transition-colors duration-500 bg-[#F4F3DC] text-gray-900"
-    >
-      
-      <Header />
-
-      <main>
-        <Routes>``
-          <Route path="/" element={<Home  />} />
-          <Route path="/services" element={<Services/>} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/careers" element={<Careers />} />
-          <Route path="/contact" element={<Contact  />} />
-          <Route path="/products" element={<OurProducts />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </main>
-
-      <Footer />
-      <WhatsAppFloat />
-      <CursorFollower />
-    </div>
+     <AnimatePresence mode="wait">
+      {isLoading ? (
+        <LoadingPage key="loading" />
+      ) : (
+        <div className="min-h-screen hide-scrollbar bg-[#F4F3DC] text-gray-900 transition-colors duration-500">
+          <Header />
+          <main>
+            <Routes location={location} key={location.pathname}>
+              <Route path="/" element={<Home />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/portfolio" element={<Portfolio />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/careers" element={<Careers />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/products" element={<OurProducts />} />
+              <Route path="/logo" element={<Logo3D />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </main>
+          <Footer />
+          <WhatsAppFloat />
+          <CursorFollower />
+        </div>
+      )}
+    </AnimatePresence>
   );
 }
 
