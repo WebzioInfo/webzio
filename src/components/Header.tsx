@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Menu, X, MoreHorizontal } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion"; // ✅ Smooth animations
-import Logo from "../assets/Logos/webzioLOGO-01-cropped.png";
+import Logo from "../assets/Logos/webzioLOGO-01-cropped.webp";
 
 import { HashLink } from "react-router-hash-link";
 
