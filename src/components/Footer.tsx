@@ -1,5 +1,5 @@
 import React from 'react';
-import { Code, Heart, MapPin, Phone, Mail, Globe, Instagram, Linkedin } from 'lucide-react';
+import { MapPin, Phone, Mail, Globe, Instagram, Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import FooterLogo from "../assets/Logos/WEBZIOLOGO5-01.png";
 
@@ -43,7 +43,7 @@ const services = [
                 alt="Webzio Logo"
                 className="h-30 -m-5 -mt-7 -ml-9 w-auto"
               />
-              <h1 className="text-2xl -mt-3 ms-2 font-extrabold" style={{ fontFamily: '"Droid Serif", serif' }}>WEBZIO</h1>
+              
             </div>
             <p className="text-gray-300 mb-6 leading-relaxed">
               Digital Solutions, Built for Everyone. From personal websites to powerful business apps — we do it all.

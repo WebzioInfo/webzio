@@ -5,7 +5,7 @@ import AdotzeeLogo from '../assets/ClientLogos/Adotzee.png';
 import BrainBayLogo from '../assets/ClientLogos/BrainbayLogo.png';
 import EssarLogo from '../assets/ClientLogos/EssarLogo.png';
 import Code7Logo from '../assets/ClientLogos/Code7Logo.png';
-import BiofixLogo from '../assets/ClientLogos/BiofixLogo.png';
+// import BiofixLogo from '../assets/ClientLogos/BiofixLogo.png';
 import BiofixLogo2 from '../assets/ClientLogos/BiofixLogo2.png'
 
 // Hardcoded client logos
@@ -16,7 +16,7 @@ const clientLogos = [
   BrainBayLogo,
   Code7Logo,
   EssarLogo,
-  BiofixLogo,
+  // BiofixLogo,
   BiofixLogo2
 ];
 
