@@ -219,7 +219,7 @@ const Careers: React.FC = () => {
               Email: careers@webzio.in
             </button>
             <button className="bg-[#C1785A] text-[#F4F3DC] px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl">
-              WhatsApp: +91 7907805626
+              WhatsApp: +91 8089864422
             </button>
           </div>
         </div>

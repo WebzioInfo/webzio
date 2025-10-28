@@ -26,7 +26,7 @@ const services = [
 
   const contactInfo = [
     { icon: <MapPin className="w-4 h-4" />, text: 'Kerala, India' },
-    { icon: <Phone className="w-4 h-4" />, text: '+91 7907805626' },
+    { icon: <Phone className="w-4 h-4" />, text: '+91 8089864422' },
     { icon: <Mail className="w-4 h-4" />, text: 'webzio.info@gmail.com' },
     { icon: <Globe className="w-4 h-4" />, text: 'www.webziointernational.in' }
   ];
@@ -55,7 +55,7 @@ const services = [
               <a href="https://www.linkedin.com/company/webzio" aria-label="LinkedIn" className="p-2 bg-webzio-secondary rounded-lg hover:bg-blue-600 transition-colors duration-300">
                 <Linkedin className="w-5 h-5 text-webzio-primary/90" />
               </a>
-              <a href="tel:+917907805626" aria-label="Call us" className="p-2 bg-webzio-secondary rounded-lg hover:bg-green-600 transition-colors duration-300">
+              <a href="tel:+918089864422" aria-label="Call us" className="p-2 bg-webzio-secondary rounded-lg hover:bg-green-600 transition-colors duration-300">
                 <Phone className="w-5 h-5 text-webzio-primary/90" />
               </a>
             </div>
