@@ -2,21 +2,17 @@ import { useEffect, useState, Suspense, lazy } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import AOS from "aos";
-import "aos/dist/aos.css";
 import Lenis from "@studio-freight/lenis";
+import "aos/dist/aos.css";
 import "./App.css";
+import Home from "./pages/Home";
 
-// import Header from "./components/Header";
-// import Footer from "./components/Footer";
-// import WhatsAppFloat from "./components/WhatsAppFloat";
-// import CursorFollower from "./components/CursorFollower";
 import LoadingPage from "./components/LoadingPage";
+
+// ✅ Lazy-loaded components
+
 // ✅ Lazy-loaded pages
-const Home = lazy(() => import("./pages/Home"));
-const Header = lazy(()=> import("./components/Header"));
-const Footer = lazy(()=> import("./components/Footer"));
-const WhatsAppFloat = lazy(()=> import("./components/WhatsAppFloat"));
-const CursorFollower = lazy(()=> import("./components/CursorFollower"));
+// const Home = lazy(() => import("./pages/Home"));
 const Services = lazy(() => import("./home/components/Services"));
 const Portfolio = lazy(() => import("./home/components/Portfolio"));
 const About = lazy(() => import("./home/components/About"));
@@ -24,42 +20,56 @@ const Careers = lazy(() => import("./home/components/Careers"));
 const Contact = lazy(() => import("./home/components/Contact"));
 const OurProducts = lazy(() => import("./home/components/OurProducts"));
 const NotFoundPage = lazy(() => import("./pages/404/NotFoundPage"));
+const Header = lazy(() => import("./components/Header"));
+const Footer = lazy(() => import("./components/Footer"));
+const WhatsAppFloat = lazy(() => import("./components/WhatsAppFloat"));
+const CursorFollower = lazy(() => import("./components/CursorFollower"));
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
 
-  // Initial loader (handles network slowness gracefully)
   useEffect(() => {
-    const handleLoad = () => setIsLoading(false);
-    window.addEventListener("load", handleLoad);
+    // ✅ Handle initial load (network-safe)
+    const onLoad = () => setIsLoading(false);
+    window.addEventListener("load", onLoad);
 
-    // Timeout fallback (if load event never fires)
     const timeout = setTimeout(() => setIsLoading(false), 2000);
 
     return () => {
-      window.removeEventListener("load", handleLoad);
+      window.removeEventListener("load", onLoad);
       clearTimeout(timeout);
     };
   }, []);
 
-  // AOS initialization
   useEffect(() => {
     AOS.init({ duration: 700, once: true, easing: "ease-out" });
+
+    const lenis = new Lenis({ duration: 1.2, smoothWheel: true });
+    let frame: number;
+
+    const raf = (time: number) => {
+      lenis.raf(time);
+      frame = requestAnimationFrame(raf);
+    };
+    frame = requestAnimationFrame(raf);
+
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   useEffect(() => {
     AOS.refresh();
   }, [location.pathname]);
 
-  // Lenis smooth scroll
   useEffect(() => {
-    const lenis = new Lenis();
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
+    const preload = async () => {
+      await Promise.all([
+        import("./home/components/Services"),
+        import("./home/components/Portfolio"),
+        import("./home/components/Contact"),
+      ]);
+    };
+    preload();
   }, []);
 
   if (isLoading) return <LoadingPage />;
@@ -67,10 +77,9 @@ function App() {
   return (
     <AnimatePresence mode="wait">
       <div className="min-h-screen hide-scrollbar bg-[#F4F3DC] text-gray-900 transition-colors duration-500">
-        <Header />
-
-        {/* ✅ Suspense wraps lazy routes */}
         <Suspense fallback={<LoadingPage />}>
+          <Header />
+
           <main>
             <Routes location={location} key={location.pathname}>
               <Route path="/" element={<Home />} />
@@ -83,11 +92,11 @@ function App() {
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </main>
-        </Suspense>
 
-        <Footer />
-        <WhatsAppFloat />
-        <CursorFollower />
+          <Footer />
+          <WhatsAppFloat />
+          <CursorFollower />
+        </Suspense>
       </div>
     </AnimatePresence>
   );
