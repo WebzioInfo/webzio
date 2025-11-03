@@ -6,14 +6,17 @@ import "aos/dist/aos.css";
 import Lenis from "@studio-freight/lenis";
 import "./App.css";
 
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import WhatsAppFloat from "./components/WhatsAppFloat";
-import CursorFollower from "./components/CursorFollower";
+// import Header from "./components/Header";
+// import Footer from "./components/Footer";
+// import WhatsAppFloat from "./components/WhatsAppFloat";
+// import CursorFollower from "./components/CursorFollower";
 import LoadingPage from "./components/LoadingPage";
-
 // ✅ Lazy-loaded pages
 const Home = lazy(() => import("./pages/Home"));
+const Header = lazy(()=> import("./components/Header"));
+const Footer = lazy(()=> import("./components/Footer"));
+const WhatsAppFloat = lazy(()=> import("./components/WhatsAppFloat"));
+const CursorFollower = lazy(()=> import("./components/CursorFollower"));
 const Services = lazy(() => import("./home/components/Services"));
 const Portfolio = lazy(() => import("./home/components/Portfolio"));
 const About = lazy(() => import("./home/components/About"));
@@ -32,7 +35,7 @@ function App() {
     window.addEventListener("load", handleLoad);
 
     // Timeout fallback (if load event never fires)
-    const timeout = setTimeout(() => setIsLoading(false), 4000);
+    const timeout = setTimeout(() => setIsLoading(false), 2000);
 
     return () => {
       window.removeEventListener("load", handleLoad);
